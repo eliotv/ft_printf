@@ -2,7 +2,7 @@
 
 char length_mod_ck(char **format, t_plchdr *res)
 {
-	while (!F_SPEC)
+	if (!F_SPEC)
 	{
 		if(**format == 'h' && res->len < 2)
 		{
