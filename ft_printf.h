@@ -1,30 +1,34 @@
 #ifndef FT_PRINTF_H
-# define GET_NEXT_LINE_H
-
+# define GET_NEXT_LINE_
+# define F_SPEC (**format == 'c' || **format == 'd' || **format == 's' || **format == 'u' || **format == 'p' || **format == 'i' || **format == 'o' || **format == 'x' || **format == 'O' || **format == 'U' || **format == 'X' || **format == 'C' || **format == 'S' || **format == 'D')
+# define L_MOD (**format == 'h' || **format == 'l' || **format == 'z' || **format == 'j' || **format == 't')
+# define L_MOD1 (*(*format + 1) == 'h' || *(*format + 1) == 'l')
 #include "../libft/libft.h"
 #include <stdarg.h>
-
+#include <limits.h>
 typedef struct		s_plchdr
 {
 	char *s_str;
-	char *res;
+	char *sign;
 	char *test;
 	intmax_t len;
 	intmax_t size;
 }					t_plchdr;
-
+// build.c
 t_plchdr			init_res(intmax_t size);
-void				append_str(char *s, char c);
-
+// ft_printf.c
 int					ft_printf(char const *format, ...);
-
 void				search_format(char **str, char **format, va_list ap, t_plchdr res);
-
 // conversion.c functions
 void				char_conv(t_plchdr res, va_list ap);
 void				str_conv(t_plchdr res, va_list ap);
 void				dec_conv(t_plchdr res, va_list ap);
 void				uint_conv(t_plchdr res, va_list ap);
-
-
+void				uint_oct_conv(t_plchdr res, va_list ap);
+void				uint_hex_conv(t_plchdr res, va_list ap, char c);
+void				pointer_adress(t_plchdr res, va_list ap);
+// functionfinder.c
+void				function_hndlr(char c, va_list ap, t_plchdr res);
+//lenghmod.c
+char				length_mod_ck(char **format, t_plchdr *res);
 #endif
