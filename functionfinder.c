@@ -1,7 +1,11 @@
 #include "ft_printf.h"
 
-void function_hndlr(char c, va_list ap, t_plchdr res)
+char  **function_hndlr(char **format, va_list ap, t_plchdr res)
 {
+	char c;
+
+	c = (**format);
+	(*format)++;
 	if (c == 'c' || c == 'C')
 		char_conv(res, ap);
 	if (c == 's')
@@ -16,5 +20,5 @@ void function_hndlr(char c, va_list ap, t_plchdr res)
 		uint_hex_conv(res, ap, c);
 	if (c == 'p')
 		pointer_adress(res, ap);
-
+	return (format);
 }

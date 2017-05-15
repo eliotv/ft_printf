@@ -2,34 +2,21 @@
 #include <stdio.h>
 void		search_format(char **str, char **format, va_list ap, t_plchdr *res)
 {
-	char	f_i;
-
 	while (**format)
 	{
 		if (*(*format) == '%')
 		{
 			(*format)++;
-			if (*(*format) == '-')
-			{
-				res->p_n = -1;
-				(*format)++;
-			}
+			if (FLG_MOD)
+				flag_finder(format, res);
 			if (NUM_MOD)
 				get_width_len(format, res);
 			if (*(*format) == '*')
-			{
 				width_mod(format ,ap, res);
-			}
 			if (!F_SPEC)
-			{
 				length_mod_ck(format, res);
-			}
 			if (F_SPEC)
-			{
-				f_i = (**format);
-				function_hndlr(f_i, ap, *res);
-				(*format)++;
-			}
+				function_hndlr(format, ap, *res);
 		}
 		ft_putchar(**format);	
 		(*format)++;

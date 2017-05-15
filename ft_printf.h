@@ -4,6 +4,7 @@
 # define L_MOD (**format == 'h' || **format == 'l' || **format == 'z' || **format == 'j' || **format == 't')
 # define L_MOD1 (*(*format + 1) == 'h' || *(*format + 1) == 'l')
 # define NUM_MOD (**format >= '0' && **format <= '9')
+# define FLG_MOD (**format == '-' || **format == '0' || **format == ' ' || **format == '#' || **format == '+') 
 #include "../libft/libft.h"
 #include <stdarg.h>
 #include <limits.h>
@@ -30,11 +31,13 @@ void				uint_oct_conv(t_plchdr res, va_list ap);
 void				uint_hex_conv(t_plchdr res, va_list ap, char c);
 void				pointer_adress(t_plchdr res, va_list ap);
 // functionfinder.c
-void				function_hndlr(char c, va_list ap, t_plchdr res);
+char				**function_hndlr(char **format, va_list ap, t_plchdr res);
 //lenghmod.c
 char				length_mod_ck(char **format, t_plchdr *res);
 // widthmod.c
 void				width_mod(char **format, va_list ap, t_plchdr *res);
 void				put_width_spc(char *s, t_plchdr *res);
 char				**get_width_len(char **format, t_plchdr *res);
+// flagmod.c
+void				flag_finder(char **format, t_plchdr *res);
 #endif

@@ -24,7 +24,14 @@ void put_width_spc(char *s, t_plchdr *res)
 			ft_putchar(' ');
 		ft_putstr(s);
 	}
-	else 
+	else if (n < res->width && res->p_n == 2)
+	{
+		while (n < --res->width)
+			ft_putchar(' ');
+		ft_putchar('+');
+		ft_putstr(s);
+	}
+	else
 		ft_putstr(s);
 }
 
