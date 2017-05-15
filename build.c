@@ -9,6 +9,7 @@ t_plchdr *init_res(intmax_t size)
 	res->len = 0;
 	res->width = 0;
 	res->p_n = 1;
+	res->s_str = malloc(sizeof(25));
 	return (res);
 }
 

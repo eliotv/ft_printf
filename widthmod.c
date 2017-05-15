@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include <stdio.h>
 
 void	width_mod(char **format, va_list ap, t_plchdr *res)
 {
@@ -27,3 +28,10 @@ void put_width_spc(char *s, t_plchdr *res)
 		ft_putstr(s);
 }
 
+char **get_width_len(char **format, t_plchdr *res)
+{
+	res->width = ft_atoi(*format);
+	while (!F_SPEC)
+		(*format)++;
+	return (format);
+}

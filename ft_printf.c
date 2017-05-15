@@ -9,13 +9,13 @@ void		search_format(char **str, char **format, va_list ap, t_plchdr *res)
 		if (*(*format) == '%')
 		{
 			(*format)++;
-			if (NUM_MOD)
-				get_width_len(format, res);
 			if (*(*format) == '-')
 			{
 				res->p_n = -1;
 				(*format)++;
 			}
+			if (NUM_MOD)
+				get_width_len(format, res);
 			if (*(*format) == '*')
 			{
 				width_mod(format ,ap, res);
