@@ -11,6 +11,7 @@ t_plchdr *init_res(intmax_t size)
 	res->plus = 0;
 	res->k = ' ';
 	res->p = 0;
+	res->p_width = 0;
 	res->hash = 0;
 	res->minus = 0;
 	

@@ -19,6 +19,7 @@ typedef struct		s_plchdr
 	intmax_t plus;// if '+' set value 1
 	intmax_t minus;// if '-' set value 1
 	intmax_t p;
+	intmax_t p_width;
 	intmax_t hash;// if '#' set value 1 
 }					t_plchdr;
 // build.c
@@ -43,6 +44,7 @@ char				length_mod_ck(char **format, t_plchdr *res);
 void				width_mod(char **format, va_list ap, t_plchdr *res);
 void				put_width_spc(char **format, char *s, t_plchdr *res);
 char				**get_width_len(char **format, t_plchdr *res);
+char				**perc_width(char **format, t_plchdr *res);
 // flagmod.c
 void				flag_finder(char **format, t_plchdr *res);
 void				hash_handler(char **format, t_plchdr *res);

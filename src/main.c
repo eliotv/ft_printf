@@ -7,8 +7,8 @@ int main(void)
 //	ft_printf("ft_printf = %S\n", NULL);
 //	printf("printf = %s\n", NULL);
 	//ft_putstr("\n\n");
-	ft_printf("ft_printf =%.2d\n", 55);
+	ft_printf("ft_printf =%#+11x\n", -555);
 //	ft_putchar('\n');
-	printf("   printf =%10.2d\n", 55);
+	printf("   printf =%#+11x\n", -555);
 
 }

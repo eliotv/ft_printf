@@ -12,7 +12,7 @@ char **perc_num(char **format, t_plchdr *res, va_list ap)
 		width_mod(format, ap, res);
 	}
 	if (NUM_MOD)
-		get_width_len(format, res);
+		perc_width(format, res);
 	return (format);
 }
 
@@ -22,7 +22,7 @@ void put_perc(char *str, t_plchdr *res)
 
 	i = 0;
 //	printf("%s\n", s);
-	while (i < res->width && str[i])
+	while (i < res->p_width && str[i])
 	{
 		ft_putchar(str[i]);
 		i++;

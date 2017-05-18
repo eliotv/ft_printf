@@ -45,10 +45,10 @@ void	flag_finder(char **format, t_plchdr *res)
 
 void hash_handler(char **format, t_plchdr *res)
 {
-	if (*(*format) == 'o')
+	if ((**format == 'o' && res->p == 1) || (**format == 'o' && res->hash == 1))
 		ft_putchar('0');
-	if (*(*format) == 'x')
+	if ((**format == 'x' && res->p == 1) || (**format == 'x' && res->hash == 1))
 		ft_putstr("0x");
-	if (*(*format) == 'X')
+	if ((**format == 'X' && res->p == 1) || (**format == 'X' && res->hash == 1))
 		ft_putstr("0X");
 }
