@@ -6,13 +6,27 @@ PFDR = src/
 
 LFTDR = libft/
 
-PFFL = build.c conversion.c flagmod.c ft_printf.c functionfinder.c lengthmod.c percisionmod.c widthmod.c
+PFFL = build.c \
+	   conversion.c \
+	   flagmod.c \
+	   ft_printf.c \
+	   functionfinder.c \
+	   lengthmod.c \
+	   percisionmod.c \
+	   widthmod.c
 
-LFTFL = ft_strlen.c ft_atoi.c ft_putchar.c ft_putstr.c ft_itoa.c ft_itoa_base.c ft_toupper.c ft_strjoin.c
+LFTFL = ft_strlen.c \
+		ft_atoi.c \
+		ft_putchar.c \
+		ft_putstr.c \
+		ft_itoa.c \
+		ft_itoa_base.c \
+		ft_toupper.c \
+		ft_strjoin.c
 
 PFSR = $(addprefix $(PFDR), $(PFFL))
 
-LFSR = $(addprefix $(LFTDR), $(LFTFL))
+LFSR = $(addprefix $(PFDR)$(LFTDR), $(LFTFL))
 
 POBJ = $(PRSR:.c=.o)
 LOBJ = $(LFSR:.c=.o)
