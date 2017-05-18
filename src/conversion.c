@@ -21,6 +21,37 @@ void str_conv(char **format, t_plchdr *res, va_list ap)
 	put_width_spc(format, s, res);	
 }
 
+intmax_t get_int(char **format, t_plchdr *res, va_list ap)
+{
+
+	if (res->len == 1)
+		return((char)va_arg(ap, int));
+	else if (res->len == 2)
+		return((short)va_arg(ap, int));
+	else if (res->len == 3)
+		return((long)va_arg(ap, int));
+	else if (res->len == 4)
+		return((long long)va_arg(ap, int));
+	else if (res->len == 5)
+		return((size_t)va_arg(ap, int));
+	else if (res->len == 6)
+		return((intmax_t)va_arg(ap, int));
+	else
+		return(va_arg(ap, int));
+}
+
+
+void dec_conv(char **format, t_plchdr *res, va_list ap)
+{
+	intmax_t	nbr;
+	char 		*s;
+
+	nbr = get_int(format, res, ap);
+	res->neg = (nbr < 0) ? -1 : 1;
+	s = ft_itoa(nbr);
+	put_width_spc(format, s, res);
+}
+/*
 void dec_conv(char **format, t_plchdr *res, va_list ap)
 {
 	char *s;
@@ -43,7 +74,7 @@ void dec_conv(char **format, t_plchdr *res, va_list ap)
 //		put_perc(s, res);
 //
 	put_width_spc(format, s, res);
-}
+}*/
 
 void uint_conv(char  **format, t_plchdr *res, va_list ap)
 {

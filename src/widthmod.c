@@ -52,7 +52,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			ft_putstr(&res->k);
 		if (res->hash == 1)
 			hash_handler(format, res);
-		if (res->k == ' ' && res->plus == 1 && **format == 'd')
+		if (res->k == ' ' && res->plus == 1 && res->neg != -1 && **format == 'd')
 			ft_putchar('+');
 		if (res->p == 1)
 			put_perc(s, res);
@@ -62,7 +62,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 	else if (n < res->width)
 	{
 	
-		if (res->hash == 1 && res->p == 0 && **format != 's')
+		if (res->hash == 1 && res->p == 0 && **format != 's' && **format != 'd')
 			res->width--;
 		if (res->hash == 1 && ((**format == 'o') || (**format == 'x') || (**format == 'X')))
 			res->width--;

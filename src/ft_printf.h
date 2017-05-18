@@ -20,7 +20,8 @@ typedef struct		s_plchdr
 	intmax_t minus;// if '-' set value 1
 	intmax_t p;
 	intmax_t p_width;
-	intmax_t hash;// if '#' set value 1 
+	intmax_t hash;// if '#' set value 1
+	intmax_t neg;
 }					t_plchdr;
 // build.c
 t_plchdr			*init_res(intmax_t size);
@@ -35,6 +36,7 @@ void				uint_conv(char **format, t_plchdr *res, va_list ap);
 void				uint_oct_conv(char **format, t_plchdr *res, va_list ap);
 void				uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c);
 void				pointer_adress(char **format, t_plchdr *res, va_list ap);
+intmax_t			get_int(char **format, t_plchdr *res, va_list ap);
 //void				wchar_conv(t_plchdr res, va_list ap);
 // functionfinder.c
 char				**function_hndlr(char **format, va_list ap, t_plchdr res);
