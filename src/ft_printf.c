@@ -1,6 +1,6 @@
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-void		search_format(char **str, char **format, va_list ap, t_plchdr *res)
+void		search_format(char **format, va_list ap, t_plchdr *res)
 {
 	while (**format)
 	{
@@ -31,11 +31,10 @@ int ft_printf(const char *format, ...)
 {
 	va_list ap;
 	t_plchdr *res;
-	char *str;
 	
 	res = init_res(25);
 	va_start(ap, format);
-	search_format(&str,(char**)&format, ap, res);
+	search_format((char**)&format, ap, res);
 	va_end(ap);
 	return (ft_strlen(format));
 }

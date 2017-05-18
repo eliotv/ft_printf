@@ -22,13 +22,17 @@ LFTFL = ft_strlen.c \
 		ft_itoa.c \
 		ft_itoa_base.c \
 		ft_toupper.c \
-		ft_strjoin.c
+		ft_strjoin.c \
+		ft_count_int_len.c \
+		ft_memalloc.c \
+		ft_isspace.c \
+		ft_bzero.c
 
 PFSR = $(addprefix $(PFDR), $(PFFL))
 
 LFSR = $(addprefix $(LFTDR), $(LFTFL))
 
-POBJ = $(PRSR:.c=.o)
+POBJ = $(PFSR:.c=.o)
 LOBJ = $(LFSR:.c=.o)
 
 all: $(NAME)

@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 t_plchdr *init_res(intmax_t size)
 {

@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	flag_finder(char **format, t_plchdr *res)
 {

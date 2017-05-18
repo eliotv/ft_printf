@@ -1,5 +1,5 @@
-#ifndef FT_PRINTF_H
-# define GET_NEXT_LINE_
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 # define F_SPEC (**format == 'c' || **format == 'd' || **format == 's' || **format == 'u' || **format == 'p' || **format == 'i' || **format == 'o' || **format == 'x' || **format == 'O' || **format == 'U' || **format == 'X' || **format == 'C' || **format == 'S' || **format == 'D')
 # define L_MOD (**format == 'h' || **format == 'l' || **format == 'z' || **format == 'j' || **format == 't')
 # define L_MOD1 ((**format + 1) == 'h' || (**format + 1) == 'l')
@@ -27,7 +27,7 @@ typedef struct		s_plchdr
 t_plchdr			*init_res(intmax_t size);
 // ft_printf.c
 int					ft_printf(char const *format, ...);
-void				search_format(char **str, char **format, va_list ap, t_plchdr *res);
+void				search_format(char **format, va_list ap, t_plchdr *res);
 // conversion.c functions
 void				char_conv(char **format, t_plchdr *res, va_list ap);
 void				str_conv(char **format, t_plchdr *res, va_list ap);
@@ -36,7 +36,7 @@ void				uint_conv(char **format, t_plchdr *res, va_list ap);
 void				uint_oct_conv(char **format, t_plchdr *res, va_list ap);
 void				uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c);
 void				pointer_adress(char **format, t_plchdr *res, va_list ap);
-intmax_t			get_int(char **format, t_plchdr *res, va_list ap);
+intmax_t			get_int(t_plchdr *res, va_list ap);
 //void				wchar_conv(t_plchdr res, va_list ap);
 // functionfinder.c
 char				**function_hndlr(char **format, va_list ap, t_plchdr res);

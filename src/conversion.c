@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void char_conv(char **format, t_plchdr *res, va_list ap)
 {
@@ -21,7 +21,7 @@ void str_conv(char **format, t_plchdr *res, va_list ap)
 	put_width_spc(format, s, res);	
 }
 
-intmax_t get_int(char **format, t_plchdr *res, va_list ap)
+intmax_t get_int(t_plchdr *res, va_list ap)
 {
 
 	if (res->len == 1)
@@ -46,7 +46,7 @@ void dec_conv(char **format, t_plchdr *res, va_list ap)
 	intmax_t	nbr;
 	char 		*s;
 
-	nbr = get_int(format, res, ap);
+	nbr = get_int(res, ap);
 	res->neg = (nbr < 0) ? -1 : 1;
 	s = ft_itoa(nbr);
 	put_width_spc(format, s, res);
