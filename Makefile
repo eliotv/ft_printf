@@ -1,6 +1,6 @@
-NAME = ft_printf.a
+NAME = libftprintf.a
 
-CFLAG = -Wall -Wextra -Werror -I
+CFLAGS = -Wall -Wextra -Werror
 
 PFDR = src/
 
@@ -26,7 +26,7 @@ LFTFL = ft_strlen.c \
 
 PFSR = $(addprefix $(PFDR), $(PFFL))
 
-LFSR = $(addprefix $(PFDR)$(LFTDR), $(LFTFL))
+LFSR = $(addprefix $(LFTDR), $(LFTFL))
 
 POBJ = $(PRSR:.c=.o)
 LOBJ = $(LFSR:.c=.o)
@@ -34,18 +34,18 @@ LOBJ = $(LFSR:.c=.o)
 all: $(NAME)
 
 $(POBJ): %.o: %.c
-	@gcc -c $(CFLAG) src/ $< -o $@
+	@gcc -c $(CFLAGS) $< -o $@
 
 $(LOBJ): %.o: %.c
-	gcc -c $(CFLAG) libft/ $< -o $@
+	gcc -c $(CFLAGS) $< -o $@
 
 $(NAME): $(POBJ) $(LOBJ)
-	@ar rc $(NAME) $(POBJ) $(LOBJ)
+	@ar rcs $(NAME) $(POBJ) $(LOBJ)
 	@echo "\033[32mft_printf Created\033[0m"
 
 clean:
-	@rm -rf $(PFDR)*.o
-	@rm -rf $(LFTDR)*.o $(LFTDR)libft.a
+	@rm -rf $(LOBJ)
+	@rm -rf $(POBJ)
 	@echo "\033[31mft_printf Removed\033[0m"
 
 fclean: clean
