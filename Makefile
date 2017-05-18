@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I
 
 PFDR = src/
 
@@ -34,10 +34,10 @@ LOBJ = $(LFSR:.c=.o)
 all: $(NAME)
 
 $(POBJ): %.o: %.c
-	@gcc -c $(CFLAGS) $< -o $@
+	@gcc -c $(CFLAGS) $(PFDR) $< -o $@
 
 $(LOBJ): %.o: %.c
-	gcc -c $(CFLAGS) $< -o $@
+	gcc -c $(CFLAGS) $(LFTDR) $< -o $@
 
 $(NAME): $(POBJ) $(LOBJ)
 	@ar rcs $(NAME) $(POBJ) $(LOBJ)
