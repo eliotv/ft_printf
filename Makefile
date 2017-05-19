@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-CFLAGS = -Wall -Wextra -Werror -I
+CFLAGS = -Wall -Wextra -Werror -g -I
 
 PFDR = src/
 
@@ -8,6 +8,7 @@ LFTDR = libft/
 
 PFFL = build.c \
 	   conversion.c \
+	   conversion2.c \
 	   flagmod.c \
 	   ft_printf.c \
 	   functionfinder.c \

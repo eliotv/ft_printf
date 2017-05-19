@@ -1,11 +1,10 @@
 #include "libftprintf.h"
 
-t_plchdr *init_res(intmax_t size)
+t_plchdr *init_res(t_plchdr *res)
 {
-	t_plchdr	*res;
-
+	if (res != NULL)
+		free (res);
 	res = (t_plchdr*)malloc(sizeof(t_plchdr));
-	res->size = size;
 	res->len = 0;
 	res->width = 0;
 	res->plus = 0;
@@ -15,13 +14,8 @@ t_plchdr *init_res(intmax_t size)
 	res->hash = 0;
 	res->minus = 0;
 	res->neg = 0;
-	
+	res->size = 0;
+	res->base = 0;
 	res->s_str = malloc(sizeof(25));
 	return (res);
 }
-
-//void convert(char c, char **fmt, t_plchdr res, va_list ap)
-//{
-//	f_i = (**format);
-//	function_hndlr(c, ap, res);
-

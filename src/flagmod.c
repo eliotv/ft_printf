@@ -1,5 +1,5 @@
 #include "libftprintf.h"
-
+/*
 void	flag_finder(char **format, t_plchdr *res)
 {
 		if (**format == '#')
@@ -8,15 +8,7 @@ void	flag_finder(char **format, t_plchdr *res)
 			res->hash = 1;
 		}
 		if (**format == '-')
-		{	
-			res->minus = 1;
-			(*format)++;
-			if (*(*format) == '+')
-			{
-				res->plus = 1;
-				(*format)++;
-			}
-		}
+			minus_flag(format, res);
 		if (**format == '+')
 		{
 			res->plus = 1;
@@ -42,7 +34,7 @@ void	flag_finder(char **format, t_plchdr *res)
 			(**format)++;
 		}
 }
-
+*/
 void hash_handler(char **format, t_plchdr *res)
 {
 	if ((**format == 'o' && res->p == 1) || (**format == 'o' && res->hash == 1))
@@ -51,4 +43,42 @@ void hash_handler(char **format, t_plchdr *res)
 		ft_putstr("0x");
 	if ((**format == 'X' && res->p == 1) || (**format == 'X' && res->hash == 1))
 		ft_putstr("0X");
+}
+
+char **minus_flag(char **format, t_plchdr *res)
+{
+	res->minus = 1;
+	(*format)++;
+	if (**format == '+')
+	{
+		res->plus = 1;
+		(*format)++;
+	}
+	return (format);
+}
+
+char **plus_flag(char **format, t_plchdr *res)
+{
+	res->plus = 1;
+	(*format)++;
+	if (**format == '+')
+		(*format)++;
+	if (**format == '-')
+	{
+		res->minus = 1;
+		(*format)++;
+	}
+	return (format);
+}
+
+char **zero_flag(char **format, t_plchdr *res)
+{
+	if (**format == '0' && res->plus == 1 && res->minus == 0)
+	{
+		res->k = '0';
+		(*format)++;
+	}
+	else if (**format == '0')
+		(*format)++;
+	return (format);
 }

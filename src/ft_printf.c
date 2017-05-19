@@ -6,6 +6,7 @@ void		search_format(char **format, va_list ap, t_plchdr *res)
 	{
 		if (**format == '%')
 		{
+			res = init_res(res);
 			(*format)++;
 			if (FLG_MOD)
 				flag_finder(format, res);
@@ -20,6 +21,7 @@ void		search_format(char **format, va_list ap, t_plchdr *res)
 			if (F_SPEC)
 				function_hndlr(format, ap, *res);
 		}
+		res->size++;
 		ft_putchar(**format);	
 		(*format)++;
 	}
@@ -31,10 +33,11 @@ int ft_printf(const char *format, ...)
 {
 	va_list ap;
 	t_plchdr *res;
-	
-	res = init_res(25);
+
+	res = NULL;
+	res = init_res(res);
 	va_start(ap, format);
 	search_format((char**)&format, ap, res);
 	va_end(ap);
-	return (ft_strlen(format));
+	return (res->size);
 }
