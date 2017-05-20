@@ -1,5 +1,4 @@
 #include "libftprintf.h"
-#include <stdio.h>
 
 char **perc_num(char **format, t_plchdr *res, va_list ap)
 {
@@ -19,12 +18,11 @@ char **perc_num(char **format, t_plchdr *res, va_list ap)
 void put_perc(char *str, t_plchdr *res)
 {
 	intmax_t i;
+	intmax_t n;
 
 	i = 0;
-//	printf("%s\n", s);
+	n = ft_strlen(str);
+
 	while (i < res->p_width && str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+		write(1, &str[i++], n);
 }

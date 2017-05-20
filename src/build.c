@@ -16,6 +16,5 @@ t_plchdr *init_res(t_plchdr *res)
 	res->neg = 0;
 	res->size = 0;
 	res->base = 0;
-	res->s_str = malloc(sizeof(25));
 	return (res);
 }

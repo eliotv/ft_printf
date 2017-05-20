@@ -36,7 +36,9 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 		if (res->p == 1)
 			put_perc(s, res);
 		else
-			ft_putstr(s);
+		{
+			put_str(s, n);
+		}
 		while(n < res->width--)
 			ft_putstr(&res->k);
 	}
@@ -57,7 +59,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 		if (res->p == 1)
 			put_perc(s, res);
 		else
-			ft_putstr(s);
+			put_str(s, n);
 	}
 	else if (n < res->width)
 	{
@@ -74,13 +76,13 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 		if (res->p == 1)
 			put_perc(s, res);
 		else
-			ft_putstr(s);
+			put_str(s, n);
 	}
 	else
 	{
 		if(res->plus == 1)
 			ft_putchar('+');
-		ft_putstr(s);
+		put_str(s, n);
 	}
 }
 
@@ -109,4 +111,13 @@ char **perc_width(char **format, t_plchdr *res)
 	while (!F_SPEC)
 		(*format)++;
 	return (format);
+}
+
+void put_str(char *str, int len)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		write(1, &str[i++], len - 1);
 }

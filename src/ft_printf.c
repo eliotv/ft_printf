@@ -19,15 +19,13 @@ void		search_format(char **format, va_list ap, t_plchdr *res)
 			if (!F_SPEC)
 				length_mod_ck(format, res);
 			if (F_SPEC)
-				function_hndlr(format, ap, *res);
+				function_hndlr(&format, ap, res);
 		}
 		res->size++;
-		ft_putchar(**format);	
+		(**format) ? ft_putchar(**format) : 0;
 		(*format)++;
 	}
 }
-
-
 
 int ft_printf(const char *format, ...)
 {
@@ -40,4 +38,8 @@ int ft_printf(const char *format, ...)
 	search_format((char**)&format, ap, res);
 	va_end(ap);
 	return (res->size);
+}
+
+char **check_mem(char **ary)
+{
 }
