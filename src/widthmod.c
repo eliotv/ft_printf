@@ -19,14 +19,18 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			if(res->hash == 0)
 				res->width--;
 		}	
-		else
+		else if (n < 0)
 			n = res->p_width;
 	}
-	if (n < res->width && res->minus == 1 && n >= 0)
+	if (n < res->width && res->minus == 1)
 	{
 		if (res->hash == 1)
 		{
 			hash_handler(format, res);
+			if (**format == 'x' || **format == 'X' || **format == 'o')
+				res->width--;
+			if (**format == 'x' || **format == 'X')
+				res->width--;
 		}
 		if (res->plus == 1 &&  res->p == 0 && res->neg == 1)
 		{
@@ -34,10 +38,11 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			res->width--;
 		}
 		if (res->p == 1)
-			put_perc(s, res);
+			put_perc(format, s, res);
 		else
 		{
-			put_str(s, n);
+			ft_putstr(s);
+			
 		}
 		while(n < res->width--)
 			ft_putstr(&res->k);
@@ -57,9 +62,9 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 		if (res->k == ' ' && res->plus == 1 && res->neg != -1 && **format == 'd')
 			ft_putchar('+');
 		if (res->p == 1)
-			put_perc(s, res);
+			put_perc(format, s, res);
 		else
-			put_str(s, n);
+			ft_putstr(s);
 	}
 	else if (n < res->width)
 	{
@@ -70,19 +75,30 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			res->width--;
 		if (res->plus == 1 && res->hash == 0)
 			ft_putchar('+');
+		if (res->k == '0')
+			hash_handler(format, res);
 		while (n < res->width--)
 			ft_putstr(&res->k);
-		hash_handler(format, res);
+		if (res->k == ' ')
+			hash_handler(format, res);
 		if (res->p == 1)
-			put_perc(s, res);
+			put_perc(format, s, res);
 		else
-			put_str(s, n);
+			ft_putstr(s);
 	}
 	else
 	{
-		if(res->plus == 1)
+		if(res->plus == 1 && *s != '-')
+		{
 			ft_putchar('+');
-		put_str(s, n);
+			res->size++;
+		}
+		if (res->hash == 1 && *s != '0')
+			hash_handler(format, res);
+		if (res->p == 1 && res->p_width > 0)
+			put_perc(format, s, res);
+		else
+			ft_putstr(s);
 	}
 }
 
@@ -113,11 +129,11 @@ char **perc_width(char **format, t_plchdr *res)
 	return (format);
 }
 
-void put_str(char *str, int len)
+/*void put_str(char *str, int len)
 {
 	int i;
 
-	i = 0;
-	while (str[i])
-		write(1, &str[i++], len - 1);
-}
+	i = -1;
+	while (str[++i])
+		write(1, &str[i], len);
+}*/

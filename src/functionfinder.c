@@ -1,28 +1,29 @@
 #include "libftprintf.h"
 
-void	function_hndlr(char ***format, va_list ap, t_plchdr *res)
+void	function_hndlr(char **format, va_list ap, t_plchdr *res)
 {
 	char c;
 
-	c = (***format);
+	c = (**format);
 	if (c == 'c' || c == 'C' || c == '%')
-		char_conv(*format, res, ap);
+		char_conv(format, res, ap);
 	if (c == 's')
-		str_conv(*format, res, ap);
+		str_conv(format, res, ap);
 	if (c == 'd' || c == 'D' || c == 'i')
-		dec_conv(*format, res, ap);
+		dec_conv(format, res, ap);
 	if (c == 'u' || c == 'U')
-		uint_conv(*format, res, ap);
+		uint_conv(format, res, ap);
 	if (c == 'o' || c == 'O')
-		uint_oct_conv(*format, res, ap);
+		uint_oct_conv(format, res, ap);
 	if (c == 'x' || c == 'X')
-		uint_hex_conv(*format, res, ap, c);
+		uint_hex_conv(format, res, ap, c);
 	if (c == 'p')
-		pointer_adress(*format, res, ap);
+		pointer_adress(format, res, ap);
 //	if (c == 'S')
 //		wchar_conv(res, ap);
-
-	(**format)++;
+	(*format)++;
+	if (**format == ' ')
+		res->size++;
 }
 
 void	flag_finder(char **format, t_plchdr *res)

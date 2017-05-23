@@ -15,14 +15,19 @@ char **perc_num(char **format, t_plchdr *res, va_list ap)
 	return (format);
 }
 
-void put_perc(char *str, t_plchdr *res)
+void put_perc(char **format, char *str, t_plchdr *res)
 {
 	intmax_t i;
 	intmax_t n;
 
 	i = 0;
 	n = ft_strlen(str);
-
-	while (i < res->p_width && str[i])
-		write(1, &str[i++], n);
+	if (**format != 's')
+	{
+		if (i < res->p_width && str[i])
+			write(1, &str[i], n);
+	}
+	else
+		while(i < res->p_width && str[i])
+			write(1, &str[i++], 1);
 }

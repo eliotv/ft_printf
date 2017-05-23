@@ -27,7 +27,8 @@ LFTFL = ft_strlen.c \
 		ft_count_int_len.c \
 		ft_memalloc.c \
 		ft_isspace.c \
-		ft_bzero.c
+		ft_bzero.c \
+		ft_un_itoa_base.c
 
 PFSR = $(addprefix $(PFDR), $(PFFL))
 

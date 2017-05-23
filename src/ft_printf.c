@@ -2,29 +2,38 @@
 
 void		search_format(char **format, va_list ap, t_plchdr *res)
 {
+	int i;
+
+	i = 1;
 	while (**format)
 	{
-		if (**format == '%')
+		while (**format == '%')
 		{
+			i = res->size;
 			res = init_res(res);
 			(*format)++;
-			if (FLG_MOD)
-				flag_finder(format, res);
-			if (NUM_MOD)
-				get_width_len(format, res);
-			if (*(*format) == '.')
-				perc_num(format, res, ap);
-			if (*(*format) == '*')
-				width_mod(format ,ap, res);
-			if (!F_SPEC)
-				length_mod_ck(format, res);
+			while (!F_SPEC)
+			{
+				if (FLG_MOD)
+					flag_finder(format, res);
+				if (NUM_MOD)
+					get_width_len(format, res);
+				if (*(*format) == '.')
+					perc_num(format, res, ap);
+				if (*(*format) == '*')
+					width_mod(format ,ap, res);
+				if (!F_SPEC)
+					length_mod_ck(format, res);
+			}
 			if (F_SPEC)
-				function_hndlr(&format, ap, res);
+				function_hndlr(format, ap, res);
 		}
 		res->size++;
 		(**format) ? ft_putchar(**format) : 0;
-		(*format)++;
+		if (**format && **format != '%')
+			(*format)++;
 	}
+	res->size += i;
 }
 
 int ft_printf(const char *format, ...)
@@ -36,10 +45,8 @@ int ft_printf(const char *format, ...)
 	res = init_res(res);
 	va_start(ap, format);
 	search_format((char**)&format, ap, res);
+	if (res->size == 0)
+		res->size++;
 	va_end(ap);
-	return (res->size);
-}
-
-char **check_mem(char **ary)
-{
+	return (res->size - 1);
 }

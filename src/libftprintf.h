@@ -11,8 +11,6 @@
 typedef struct		s_plchdr
 {
 	char k;
-	char *s_str;
-	char *sign;
 	intmax_t width;//width mod
 	intmax_t len;//len mod
 	intmax_t size;
@@ -22,41 +20,61 @@ typedef struct		s_plchdr
 	intmax_t p_width;
 	intmax_t hash;// if '#' set value 1
 	intmax_t neg;// negative numbers
-	intmax_t base;
+	intmax_t base;// value you set for itoa and atoi conversions
+
 }					t_plchdr;
-// build.c
+/*
+**   --------------------  build.c  -------------------- 
+*/
 t_plchdr			*init_res(t_plchdr *res);
-// ft_printf.c
+/*
+**   -------------------  ft_printf.c  -----------------
+*/
 int					ft_printf(char const *format, ...);
 void				search_format(char **format, va_list ap, t_plchdr *res);
-// conversion2.c functions
+/*
+**   ------------------  conversion2.c  ----------------
+*/
 void				char_conv(char **format, t_plchdr *res, va_list ap);
 void				str_conv(char **format, t_plchdr *res, va_list ap);
 void				dec_conv(char **format, t_plchdr *res, va_list ap);
 intmax_t			get_int(t_plchdr *res, va_list ap);
 char				*base_conv(t_plchdr *res, va_list ap);
-// conversion.c functions
+/*
+**   -------------------  conversion.c  ---------------
+*/
 void				uint_conv(char **format, t_plchdr *res, va_list ap);
 void				uint_oct_conv(char **format, t_plchdr *res, va_list ap);
 void				uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c);
 void				pointer_adress(char **format, t_plchdr *res, va_list ap);
 //void				wchar_conv(t_plchdr res, va_list ap);
-// functionfinder.c
-char				**function_hndlr(char **format, va_list ap, t_plchdr res);
+/*
+**   -----------------  functionfinder.c  -------------
+*/
+void				function_hndlr(char **format, va_list ap, t_plchdr *res);
 void				flag_finder(char **format, t_plchdr *res);
-//lenghmod.c
+/*
+**   -------------------  lengthmod.c  -----------------
+*/
 char				length_mod_ck(char **format, t_plchdr *res);
-// widthmod.c
+/*
+**   -------------------  widthmod.c  ------------------
+*/
 void				width_mod(char **format, va_list ap, t_plchdr *res);
 void				put_width_spc(char **format, char *s, t_plchdr *res);
 char				**get_width_len(char **format, t_plchdr *res);
 char				**perc_width(char **format, t_plchdr *res);
-// flagmod.c
+void				put_str(char *str, int len);
+/*
+**   -------------------  flagmod.c  -------------------
+*/
 void				hash_handler(char **format, t_plchdr *res);
 char				**minus_flag(char **format, t_plchdr *res);
 char				**plus_flag(char **format, t_plchdr *res);
 char				**zero_flag(char **format, t_plchdr *res);
-// percisionmod.c
+/*
+**   -------------------  percisionmod.c  --------------
+*/
 char				**perc_num(char **format, t_plchdr *res, va_list ap);
-void				put_perc(char *str, t_plchdr *res);
+void				put_perc(char **format, char *str, t_plchdr *res);
 #endif

@@ -13,8 +13,8 @@ t_plchdr *init_res(t_plchdr *res)
 	res->p_width = 0;
 	res->hash = 0;
 	res->minus = 0;
-	res->neg = 0;
 	res->size = 0;
+	res->neg = 0;
 	res->base = 0;
 	return (res);
 }
