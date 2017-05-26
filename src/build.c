@@ -16,5 +16,6 @@ t_plchdr *init_res(t_plchdr *res)
 	res->size = 0;
 	res->neg = 0;
 	res->base = 0;
+	res->sf = 0;
 	return (res);
 }

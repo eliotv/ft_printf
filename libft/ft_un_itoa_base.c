@@ -8,7 +8,7 @@ char	*ft_un_itoa_base(unsigned long long value, int base)
 
 	len = ft_count_int_len(value, base);
 	n = value;
-	str = (char*)malloc(len + 1);
+	str = (char*)ft_memalloc(len + 1);
 	if (!str)
 		return (0);
 	len--;

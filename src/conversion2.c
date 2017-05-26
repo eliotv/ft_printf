@@ -26,14 +26,28 @@ void char_conv(char **format, t_plchdr *res, va_list ap)
 void str_conv(char **format, t_plchdr *res, va_list ap)
 {
 	char *s;
+	intmax_t tmp;
 
+	tmp = 0;
 	s = va_arg(ap, char*);
-	if (res->width == 0 && res->minus == 0)
+	if (res->p == 1 && res->width == 0)
+	{
+		tmp = ft_strlen(s) - res->p_width;
+		if (tmp > 0)
+			res->size += tmp;
+	}
+	else if (res->width == 0 && res->minus == 0)
 	{
 		res->size += ft_strlen(s);
 		if (res->size > 0)
-		res->size -= res->p_width;
+			res->size -= res->p_width;
 	}
+/*	if (res->p == 1 && res->width == 0)
+	{
+		tmp = ft_strlen(s) - res->p_width;
+		if (tmp > 0)
+			res->size += tmp;
+	}*/
 	put_width_spc(format, s, res);
 }
 

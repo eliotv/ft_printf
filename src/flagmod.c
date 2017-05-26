@@ -64,7 +64,6 @@ char **minus_flag(char **format, t_plchdr *res)
 	if (**format == '+')
 	{
 		res->plus = 1;
-		res->size++;
 		(*format)++;
 	}
 	return (format);
@@ -94,4 +93,13 @@ char **zero_flag(char **format, t_plchdr *res)
 	else if (**format == '0')
 		(*format)++;
 	return (format);
+}
+
+void space_flag(char **format, char *s, t_plchdr *res)
+{
+	if (res->minus == 0 && *s != '-' && res->sf == 1 && **format == 'd' && res->plus == 0)
+	{
+		res->size++;
+		ft_putchar(' ');
+	}
 }

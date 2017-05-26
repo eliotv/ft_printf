@@ -22,8 +22,6 @@ void	function_hndlr(char **format, va_list ap, t_plchdr *res)
 //	if (c == 'S')
 //		wchar_conv(res, ap);
 	(*format)++;
-	if (**format == ' ')
-		res->size++;
 }
 
 void	flag_finder(char **format, t_plchdr *res)
@@ -41,8 +39,9 @@ void	flag_finder(char **format, t_plchdr *res)
 		zero_flag(format, res);
 	if (**format == ' ')
 	{
+		res->sf = 1;
 		res->k = ' ';
-		while (**format == ' ' )
+		while (**format == ' ')
 			(*format)++;
 	}
 }

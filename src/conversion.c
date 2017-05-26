@@ -8,6 +8,8 @@ void uint_conv(char  **format, t_plchdr *res, va_list ap)
 	s = base_conv(res, ap);
 	if (res->width <= 1)
 		res->size += ft_strlen(s);
+	else if ((intmax_t)ft_strlen(s) == res->width)
+		res->size += ft_strlen(s);
 	put_width_spc(format, s, res);
 }
 
@@ -37,6 +39,8 @@ void uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c)
 	}
 	if (res->width <= 1)
 		res->size += ft_strlen(s);
+	if (res->width < (intmax_t)ft_strlen(s) && res->size < (intmax_t)ft_strlen(s))
+		res->size = ft_strlen(s);
 	put_width_spc(format, s, res);
 }
 
@@ -50,7 +54,7 @@ void pointer_adress(char **format, t_plchdr *res, va_list ap)
 	s = ft_itoa_base(va_arg(ap, long long), 16);
 	tmp = ft_strjoin(hex, s);
 	if (res->width <= 1)
-		res->size = ft_strlen(s);
+		res->size += ft_strlen(s);
 	put_width_spc(format, tmp, res);
 }
 

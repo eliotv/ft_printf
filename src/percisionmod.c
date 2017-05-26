@@ -31,3 +31,13 @@ void put_perc(char **format, char *str, t_plchdr *res)
 		while(i < res->p_width && str[i])
 			write(1, &str[i++], 1);
 }
+/*
+void perc_mod_width(t_plchdr *res)
+{
+	if (res->p_width > res->width)
+	{
+		res->size -= res->width;
+		res->width = res->p_width;
+		res->size += res->width;
+	}
+}*/

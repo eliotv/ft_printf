@@ -4,13 +4,15 @@
 # define L_MOD (**format == 'h' || **format == 'l' || **format == 'z' || **format == 'j' || **format == 't')
 # define L_MOD1 ((**format + 1) == 'h' || (**format + 1) == 'l')
 # define NUM_MOD (**format >= '0' && **format <= '9')
-# define FLG_MOD (**format == '-' || **format == '0' || **format == ' ' || **format == '#' || **format == '+') 
+# define FLG_MOD (**format == '-' || **format == '0' || **format == ' ' || **format == '#' || **format == '+')
+# define DIG_MOD (**format == 'D' || **format == 'd' || **format == 'x' || **format == 'X' || **format == 'o' || **format == 'O' || **format =='u' || **format == 'U')
 #include "../libft/libft.h"
 #include <stdarg.h>
 #include <limits.h>
 typedef struct		s_plchdr
 {
 	char k;
+	intmax_t sf;
 	intmax_t width;//width mod
 	intmax_t len;//len mod
 	intmax_t size;
@@ -72,9 +74,11 @@ void				hash_handler(char **format, t_plchdr *res);
 char				**minus_flag(char **format, t_plchdr *res);
 char				**plus_flag(char **format, t_plchdr *res);
 char				**zero_flag(char **format, t_plchdr *res);
+void				space_flag(char **format, char *s, t_plchdr *res);
 /*
 **   -------------------  percisionmod.c  --------------
 */
 char				**perc_num(char **format, t_plchdr *res, va_list ap);
 void				put_perc(char **format, char *str, t_plchdr *res);
+
 #endif
