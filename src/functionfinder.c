@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functionfinder.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 10:33:27 by evanheum          #+#    #+#             */
+/*   Updated: 2017/05/27 10:33:45 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 void	function_hndlr(char **format, va_list ap, t_plchdr *res)
@@ -21,7 +33,8 @@ void	function_hndlr(char **format, va_list ap, t_plchdr *res)
 		pointer_adress(format, res, ap);
 //	if (c == 'S')
 //		wchar_conv(res, ap);
-	(*format)++;
+//	if (**format != '%')
+		(*format)++;
 }
 
 void	flag_finder(char **format, t_plchdr *res)

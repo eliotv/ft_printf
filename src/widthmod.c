@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   widthmod.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
+/*   Updated: 2017/05/27 15:13:47 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 void	width_mod(char **format, va_list ap, t_plchdr *res)
@@ -27,7 +39,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			n = res->p_width - 1;
 			if(res->hash == 0)
 				res->width--;
-		}	
+		}
 		else if (n < 0)
 			n = res->p_width;
 	}
@@ -66,7 +78,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 	else if (n < res->width && res->plus == 1)
 	{
 		if (res->k == '0' && *s != '-')
-			ft_putchar('+'); 
+			ft_putchar('+');
 		else if (*s == '-')
 		{
 			ft_putchar(*s);
@@ -95,8 +107,8 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 	}
 	else if (n < res->width)
 	{
-	
-		if (res->hash == 1 && res->p == 0 && **format != 's' && **format != 'd' && **format != 'o')
+
+		if (res->hash == 1 && res->p == 0 && **format != 's' && (**format != 'd' || **format != 'i') && **format != 'o')
 			res->width--;
 		if (res->hash == 1 && ((**format == 'o') || (**format == 'x') || (**format == 'X')))
 			res->width--;
@@ -164,10 +176,26 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			}
 		}
 		space_flag(format, s, res);
+		if ((**format == 'u' || **format == 'U') && res->width > 1)
+				res->size = ft_strlen(s);
 		if (res->p == 1 && res->p_width > 0)
 			put_perc(format, s, res);
+		else if (res->p == 1 && res->p_width <= 0 && *s == '0')
+		{
+			if (**format == 'o' && res->hash == 1)
+				ft_putstr(s);
+			else
+			{
+				if (res->hash == 1)
+					NULL;
+				res->size = 0;
+				NULL;
+			}
+		}
 		else
 			ft_putstr(s);
+
+
 	}
 }
 
@@ -183,7 +211,8 @@ char **get_width_len(char **format, t_plchdr *res)
 			(*format)++;
 			res->p_width = ft_atoi(*format);
 		}
-		(*format)++;
+		else
+			(*format)++;
 	}
 	if (**format != 's')
 		res->p = 0;
@@ -195,7 +224,7 @@ char **perc_width(char **format, t_plchdr *res)
 	res->p_width = ft_atoi(*format);
 	while (!F_SPEC)
 		(*format)++;
-	if (**format != 's')
+	if (**format != 's' && **format != 'd' && **format != 'o' && **format != 'x')
 		res->p = 0;
 	return (format);
 }

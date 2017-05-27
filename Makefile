@@ -30,7 +30,8 @@ LFTFL = ft_strlen.c \
 		ft_bzero.c \
 		ft_un_itoa_base.c \
 		ft_strcmp.c \
-		ft_strndup.c
+		ft_strndup.c \
+		ft_count_unint_len.c
 
 PFSR = $(addprefix $(PFDR), $(PFFL))
 

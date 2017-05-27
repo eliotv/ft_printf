@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conversion.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 10:33:18 by evanheum          #+#    #+#             */
+/*   Updated: 2017/05/27 10:33:50 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 void uint_conv(char  **format, t_plchdr *res, va_list ap)
@@ -5,10 +17,10 @@ void uint_conv(char  **format, t_plchdr *res, va_list ap)
 	char *s;
 
 	res->base = 10;
+	if (**format == 'U')
+		res->len = 3;
 	s = base_conv(res, ap);
 	if (res->width <= 1)
-		res->size += ft_strlen(s);
-	else if ((intmax_t)ft_strlen(s) == res->width)
 		res->size += ft_strlen(s);
 	put_width_spc(format, s, res);
 }

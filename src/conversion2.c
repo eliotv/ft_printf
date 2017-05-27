@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conversion2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 10:33:03 by evanheum          #+#    #+#             */
+/*   Updated: 2017/05/27 14:17:18 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 void char_conv(char **format, t_plchdr *res, va_list ap)
@@ -59,9 +71,9 @@ intmax_t get_int(t_plchdr *res, va_list ap)
 	else if (res->len == 2)
 		return((short)va_arg(ap, int));
 	else if (res->len == 3)
-		return((long)va_arg(ap, long));
+		return(va_arg(ap, long));
 	else if (res->len == 4)
-		return((long long)va_arg(ap, long long));
+		return(va_arg(ap, long long));
 	else if (res->len == 5)
 		return((size_t)va_arg(ap, size_t));
 	else if (res->len == 6)
@@ -91,9 +103,9 @@ char *base_conv(t_plchdr *res, va_list ap)
 	else if (res->len == 2)
 		return (ft_un_itoa_base((short)va_arg(ap, unsigned int), res->base));
 	else if (res->len == 3)
-		return (ft_un_itoa_base((long)va_arg(ap, unsigned long), res->base));
+		return (ft_un_itoa_base(va_arg(ap, unsigned long), res->base));
 	else if (res->len == 4)
-		return (ft_un_itoa_base((long long)va_arg(ap, unsigned long long), res->base));
+		return (ft_un_itoa_base(va_arg(ap, unsigned long long), res->base));
 	else if (res->len == 5)
 		return (ft_un_itoa_base((size_t)va_arg(ap, size_t), res->base));
 	else if (res->len == 6)

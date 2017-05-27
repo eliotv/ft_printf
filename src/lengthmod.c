@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lengthmod.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 10:33:28 by evanheum          #+#    #+#             */
+/*   Updated: 2017/05/27 10:33:44 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 char length_mod_ck(char **format, t_plchdr *res)
@@ -23,7 +35,6 @@ char length_mod_ck(char **format, t_plchdr *res)
 				res->len = 4;
 				(*format)++;
 			}
-			
 		}
 		if (res->len < 5 && **format == 'z')
 		{

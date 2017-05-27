@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flagmod.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 10:33:15 by evanheum          #+#    #+#             */
+/*   Updated: 2017/05/27 10:33:48 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 /*
 void	flag_finder(char **format, t_plchdr *res)
@@ -16,7 +28,7 @@ void	flag_finder(char **format, t_plchdr *res)
 			if (**format == '+')
 				(*format)++;
 			if (**format =='-')
-			{	
+			{
 				res->minus = 1;
 				(*format)++;
 			}
@@ -97,7 +109,7 @@ char **zero_flag(char **format, t_plchdr *res)
 
 void space_flag(char **format, char *s, t_plchdr *res)
 {
-	if (res->minus == 0 && *s != '-' && res->sf == 1 && **format == 'd' && res->plus == 0)
+	if (res->minus == 0 && *s != '-' && res->sf == 1 && (**format == 'd' || **format == 'i' )&& res->plus == 0)
 	{
 		res->size++;
 		ft_putchar(' ');

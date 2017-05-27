@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   percisionmod.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 10:33:33 by evanheum          #+#    #+#             */
+/*   Updated: 2017/05/27 14:49:31 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 char **perc_num(char **format, t_plchdr *res, va_list ap)
@@ -31,13 +43,3 @@ void put_perc(char **format, char *str, t_plchdr *res)
 		while(i < res->p_width && str[i])
 			write(1, &str[i++], 1);
 }
-/*
-void perc_mod_width(t_plchdr *res)
-{
-	if (res->p_width > res->width)
-	{
-		res->size -= res->width;
-		res->width = res->p_width;
-		res->size += res->width;
-	}
-}*/

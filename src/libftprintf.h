@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
+/*   Updated: 2017/05/27 10:33:43 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 # define F_SPEC (**format == 'c' || **format == 'd' || **format == 's' || **format == 'u' || **format == 'p' || **format == 'i' || **format == 'o' || **format == 'x' || **format == 'O' || **format == 'U' || **format == 'X' || **format == 'C' || **format == 'S' || **format == 'D' || **format == '%')
@@ -5,7 +17,7 @@
 # define L_MOD1 ((**format + 1) == 'h' || (**format + 1) == 'l')
 # define NUM_MOD (**format >= '0' && **format <= '9')
 # define FLG_MOD (**format == '-' || **format == '0' || **format == ' ' || **format == '#' || **format == '+')
-# define DIG_MOD (**format == 'D' || **format == 'd' || **format == 'x' || **format == 'X' || **format == 'o' || **format == 'O' || **format =='u' || **format == 'U')
+# define DIG_MOD (**format == 'i' || **format == 'D' || **format == 'd' || **format == 'x' || **format == 'X' || **format == 'o' || **format == 'O' || **format =='u' || **format == 'U')
 #include "../libft/libft.h"
 #include <stdarg.h>
 #include <limits.h>
@@ -26,7 +38,7 @@ typedef struct		s_plchdr
 
 }					t_plchdr;
 /*
-**   --------------------  build.c  -------------------- 
+**   --------------------  build.c  --------------------
 */
 t_plchdr			*init_res(t_plchdr *res);
 /*

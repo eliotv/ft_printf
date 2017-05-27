@@ -1,8 +1,8 @@
 #include "libft.h"
 
-char	*ft_itoa_base(long long value, int base)
+char	*ft_itoa_base(intmax_t value, int base)
 {
-	long long n;
+	intmax_t n;
 	int len;
 	char *str;
 

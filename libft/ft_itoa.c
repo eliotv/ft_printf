@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-char			*ft_itoa(long long n)
+char			*ft_itoa(intmax_t n)
 {
 	char		*str;
-	long long	num;
+	intmax_t	num;
 	size_t		len;
 
 	len = ft_count_int_len(n, 10);
