@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/27 15:13:47 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 17:43:49 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			hash_handler(format, res);
 		if (res->p == 1)
 			put_perc(format, s, res);
+		else if (res->p_width == -1  && *s == '0' && res->hash == 0)
+			ft_putchar(' ');
 		else
 			ft_putstr(s);
 	}
@@ -188,7 +190,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			{
 				if (res->hash == 1)
 					NULL;
-				res->size = 0;
+				res->size--;
 				NULL;
 			}
 		}

@@ -9,6 +9,8 @@ int main(void)
 //	printf("printf = %s\n", NULL);
 	//ft_putstr("\n\n")	
 	//	printf("   printf = %d%s", 42, "255");
-	ft_printf("@moulitest: %5.d %5.0d", 0, 0);
+	ft_printf("%2c", 0);
+	//	ft_putchar('\n');
+//	printf("@moulitest: %s", NULL);
 	//	printf("   printf = %X", 42);
 }

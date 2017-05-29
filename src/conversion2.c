@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:03 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/27 14:17:18 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 17:57:37 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void str_conv(char **format, t_plchdr *res, va_list ap)
 
 	tmp = 0;
 	s = va_arg(ap, char*);
+	if (!s)
+	{
+		ft_putstr("(null)");
+		res->size += 4;
+		return ;
+	}
 	if (res->p == 1 && res->width == 0)
 	{
 		tmp = ft_strlen(s) - res->p_width;

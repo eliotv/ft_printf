@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evanheum <evanheum@42.us.org>              +#+  +:+       +#+        */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:02:38 by evanheum          #+#    #+#             */
-/*   Updated: 2017/03/20 11:56:20 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 15:32:23 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,16 @@
 char			*ft_itoa(intmax_t n)
 {
 	char		*str;
-	intmax_t	num;
+	uintmax_t	num;
 	size_t		len;
+	int 			neg;
 
+	neg = (n >= 0) ? 0 : 1;
 	len = ft_count_int_len(n, 10);
-	num = n;
+	if (neg == 1)
+		num = n * -1;
+	else
+		num = n;
 	str = (char*)malloc(len);
 	if (!str)
 		return (0);
@@ -27,11 +32,8 @@ char			*ft_itoa(intmax_t n)
 	str[len] = '\0';
 	if (num == 0)
 		str[0] = '0';
-	if (num < 0)
-	{
-		num *= -1;
+	if (neg == 1)
 		str[0] = '-';
-	}
 	while (num > 0)
 	{
 		str[--len] = (num % 10) + '0';
