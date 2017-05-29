@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:15 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/27 10:33:48 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 19:08:38 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	flag_finder(char **format, t_plchdr *res)
 		}
 }
 */
-void hash_handler(char **format, t_plchdr *res)
+void 	hash_handler(char **format, t_plchdr *res)
 {
 	if ((**format == 'o' && res->p == 1) || (**format == 'o' && res->hash == 1))
 	{
@@ -69,7 +69,7 @@ void hash_handler(char **format, t_plchdr *res)
 	}
 }
 
-char **minus_flag(char **format, t_plchdr *res)
+char	 **minus_flag(char **format, t_plchdr *res)
 {
 	res->minus = 1;
 	(*format)++;
@@ -81,7 +81,7 @@ char **minus_flag(char **format, t_plchdr *res)
 	return (format);
 }
 
-char **plus_flag(char **format, t_plchdr *res)
+char 	**plus_flag(char **format, t_plchdr *res)
 {
 	res->plus = 1;
 	(*format)++;
@@ -95,7 +95,7 @@ char **plus_flag(char **format, t_plchdr *res)
 	return (format);
 }
 
-char **zero_flag(char **format, t_plchdr *res)
+char	**zero_flag(char **format, t_plchdr *res)
 {
 	if (**format == '0' && res->minus == 0)
 	{
@@ -107,7 +107,7 @@ char **zero_flag(char **format, t_plchdr *res)
 	return (format);
 }
 
-void space_flag(char **format, char *s, t_plchdr *res)
+void	space_flag(char **format, char *s, t_plchdr *res)
 {
 	if (res->minus == 0 && *s != '-' && res->sf == 1 && (**format == 'd' || **format == 'i' )&& res->plus == 0)
 	{

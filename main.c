@@ -9,7 +9,10 @@ int main(void)
 //	printf("printf = %s\n", NULL);
 	//ft_putstr("\n\n")	
 	//	printf("   printf = %d%s", 42, "255");
-	ft_printf("%2c", 0);
+	printf("\t%d\n", ft_printf("%8.4d", 424242424));
+	printf("\t%d", printf("%8.4d", 424242424));
+
+
 	//	ft_putchar('\n');
 //	printf("@moulitest: %s", NULL);
 	//	printf("   printf = %X", 42);

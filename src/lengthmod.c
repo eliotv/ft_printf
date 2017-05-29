@@ -6,21 +6,21 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:28 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 12:31:59 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 19:06:29 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char length_mod_ck(char **format, t_plchdr *res)
+char	length_mod_ck(char **format, t_plchdr *res)
 {
 	if (!F_SPEC)
 	{
-		if(**format == 'h' && res->len < 2)
+		if (**format == 'h' && res->len < 2)
 		{
 			res->len = 2;
 			(*format)++;
-			if(*(*format) == 'h')
+			if (*(*format) == 'h')
 			{
 				res->len = 1;
 				(*format)++;

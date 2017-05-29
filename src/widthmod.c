@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 17:43:49 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 19:30:31 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	width_mod(char **format, va_list ap, t_plchdr *res)
 	(*format)++;
 }
 
-void put_width_spc(char **format, char *s, t_plchdr *res)
+void	put_width_spc(char **format, char *s, t_plchdr *res)
 {
 	intmax_t n;
 	char *tmp;
@@ -37,7 +37,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 		if (res->plus == 1 && res->minus == 0)
 		{
 			n = res->p_width - 1;
-			if(res->hash == 0)
+			if (res->hash == 0)
 				res->width--;
 		}
 		else if (n < 0)
@@ -62,7 +62,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 		{
 			if (res->p_width > res->width)
 				res->size += res->p_width - res->width;
-			while(res->p_width-- > n)
+			while (res->p_width-- > n)
 			{
 				ft_putchar('0');
 				res->width--;
@@ -133,6 +133,8 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			{
 				ft_putstr(&res->k);
 				res->width--;
+				if (res->null == 1 && res->p == 0 && **format == 'c')
+					res->width--;
 			}
 		if (DIG_MOD)
 		{
@@ -145,14 +147,14 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 			hash_handler(format, res);
 		if (res->p == 1)
 			put_perc(format, s, res);
-		else if (res->p_width == -1  && *s == '0' && res->hash == 0)
+		else if (res->p_width == -1 && *s == '0' && res->hash == 0)
 			ft_putchar(' ');
 		else
 			ft_putstr(s);
 	}
 	else
 	{
-		if(res->plus == 1 && *s != '-' && **format != 'u')
+		if (res->plus == 1 && *s != '-' && **format != 'u')
 		{
 			ft_putchar('+');
 			res->size++;
@@ -179,7 +181,7 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 		}
 		space_flag(format, s, res);
 		if ((**format == 'u' || **format == 'U') && res->width > 1)
-				res->size = ft_strlen(s);
+			res->size = ft_strlen(s);
 		if (res->p == 1 && res->p_width > 0)
 			put_perc(format, s, res);
 		else if (res->p == 1 && res->p_width <= 0 && *s == '0')
@@ -196,12 +198,10 @@ void put_width_spc(char **format, char *s, t_plchdr *res)
 		}
 		else
 			ft_putstr(s);
-
-
 	}
 }
 
-char **get_width_len(char **format, t_plchdr *res)
+char	**get_width_len(char **format, t_plchdr *res)
 {
 	res->width = ft_atoi(*format);
 	res->size += res->width;
@@ -221,7 +221,7 @@ char **get_width_len(char **format, t_plchdr *res)
 	return (format);
 }
 
-char **perc_width(char **format, t_plchdr *res)
+char	**perc_width(char **format, t_plchdr *res)
 {
 	res->p_width = ft_atoi(*format);
 	while (!F_SPEC)
@@ -230,12 +230,3 @@ char **perc_width(char **format, t_plchdr *res)
 		res->p = 0;
 	return (format);
 }
-
-/*void put_str(char *str, int len)
-{
-	int i;
-
-	i = -1;
-	while (str[++i])
-		write(1, &str[i], len);
-}*/

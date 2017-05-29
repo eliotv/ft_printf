@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/27 10:33:43 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 19:24:03 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct		s_plchdr
 	intmax_t hash;// if '#' set value 1
 	intmax_t neg;// negative numbers
 	intmax_t base;// value you set for itoa and atoi conversions
-
+	intmax_t null;
 }					t_plchdr;
 /*
 **   --------------------  build.c  --------------------

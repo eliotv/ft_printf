@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:03 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 17:57:37 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 19:42:28 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void char_conv(char **format, t_plchdr *res, va_list ap)
 	{
 		c[0] = va_arg(ap, int);
 		c[1] = '\0';
+		if (c[0] == 0)
+			res->null = 1;
 	}
 	if (res->width == 0)
 	{
@@ -99,6 +101,8 @@ void dec_conv(char **format, t_plchdr *res, va_list ap)
 	s = ft_itoa(nbr);
 	if (res->width == 0)
 		res->size += ft_strlen(s);
+	else if (res->width < (intmax_t)ft_strlen(s))
+		res->size = ft_strlen(s);
 	put_width_spc(format, s, res);
 }
 

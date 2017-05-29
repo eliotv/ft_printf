@@ -6,13 +6,13 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:25 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/27 10:33:46 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/28 19:07:24 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		search_format(char **format, va_list ap, t_plchdr *res)
+void	search_format(char **format, va_list ap, t_plchdr *res)
 {
 	int i;
 
@@ -33,7 +33,7 @@ void		search_format(char **format, va_list ap, t_plchdr *res)
 				if (**format == '.')
 					perc_num(format, res, ap);
 				if (**format == '*')
-					width_mod(format ,ap, res);
+					width_mod(format, ap, res);
 				if (!F_SPEC)
 					length_mod_ck(format, res);
 			}
@@ -50,7 +50,7 @@ void		search_format(char **format, va_list ap, t_plchdr *res)
 	res->size += i;
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list ap;
 	t_plchdr *res;
