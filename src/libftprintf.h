@@ -6,36 +6,44 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 19:24:03 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/30 12:04:43 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 # define F_SPEC (**format == 'c' || **format == 'd' || **format == 's' || **format == 'u' || **format == 'p' || **format == 'i' || **format == 'o' || **format == 'x' || **format == 'O' || **format == 'U' || **format == 'X' || **format == 'C' || **format == 'S' || **format == 'D' || **format == '%')
-# define L_MOD (**format == 'h' || **format == 'l' || **format == 'z' || **format == 'j' || **format == 't')
+
+# define L_MOD (**format == 'h' || **format == 'l' || **format == 'z' || **format == 'j')
+
 # define L_MOD1 ((**format + 1) == 'h' || (**format + 1) == 'l')
+
 # define NUM_MOD (**format >= '0' && **format <= '9')
+
 # define FLG_MOD (**format == '-' || **format == '0' || **format == ' ' || **format == '#' || **format == '+')
+
 # define DIG_MOD (**format == 'i' || **format == 'D' || **format == 'd' || **format == 'x' || **format == 'X' || **format == 'o' || **format == 'O' || **format =='u' || **format == 'U')
+
+# define ALL_MOD (**format == 'h' || **format == 'l' || **format == 'z' || **format == 'j' || **format == '-' || **format == '0' || **format == ' ' || **format == '#' || **format == '+' || **format == '.' || **format == '*' || (**format >= '0' && **format <= 9))
+
 #include "../libft/libft.h"
 #include <stdarg.h>
 #include <limits.h>
 typedef struct		s_plchdr
 {
-	char k;
-	intmax_t sf;
+	char k;// storing ' ' or '0' for printing
+	intmax_t sf;//space flag
 	intmax_t width;//width mod
 	intmax_t len;//len mod
-	intmax_t size;
+	intmax_t size;//return size
 	intmax_t plus;// if '+' set value 1
 	intmax_t minus;// if '-' set value 1
-	intmax_t p;
-	intmax_t p_width;
+	intmax_t p;//percision on/off
+	intmax_t p_width;// width of percision
 	intmax_t hash;// if '#' set value 1
 	intmax_t neg;// negative numbers
 	intmax_t base;// value you set for itoa and atoi conversions
-	intmax_t null;
+	intmax_t null;//null passed
 }					t_plchdr;
 /*
 **   --------------------  build.c  --------------------

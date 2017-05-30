@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:03 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 19:42:28 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/30 13:20:30 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void dec_conv(char **format, t_plchdr *res, va_list ap)
 	else if (res->width < (intmax_t)ft_strlen(s))
 		res->size = ft_strlen(s);
 	put_width_spc(format, s, res);
+	free(s);
 }
 
 char *base_conv(t_plchdr *res, va_list ap)

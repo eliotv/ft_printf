@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:02:38 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/29 14:51:09 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/30 13:20:11 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char			*ft_itoa(intmax_t n)
 {
-	char		*s;
 	char		*str;
 	uintmax_t	num;
 	size_t		len;
@@ -40,7 +39,5 @@ char			*ft_itoa(intmax_t n)
 		str[--len] = (num % 10) + '0';
 		num = num / 10;
 	}
-	s = str;
-	free(str);
-	return (s);
+	return (str);
 }
