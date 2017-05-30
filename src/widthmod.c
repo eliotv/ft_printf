@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 19:30:31 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/29 21:23:49 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 		if (n < res->p_width)
 		{
 			res->k = ' ';
+			if (*s == '-')
+				res->p_width++;
 			while (res->p_width < res->width--)
 				ft_putstr(&res->k);
 			res->size--;
@@ -140,6 +142,11 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 		{
 			if (res->p_width > res->width)
 				res->size += res->p_width - res->width;
+			if (*s == '-')
+			{
+				ft_putchar(*s);
+				s++;
+			}
 			while (res->p_width-- > n)
 				ft_putchar('0');
 		}
@@ -180,7 +187,7 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 			}
 		}
 		space_flag(format, s, res);
-		if ((**format == 'u' || **format == 'U') && res->width > 1)
+		if ((**format == 'u' || **format == 'U') && res->width > 1 && res->size < (intmax_t)ft_strlen(s))
 			res->size = ft_strlen(s);
 		if (res->p == 1 && res->p_width > 0)
 			put_perc(format, s, res);
@@ -226,7 +233,7 @@ char	**perc_width(char **format, t_plchdr *res)
 	res->p_width = ft_atoi(*format);
 	while (!F_SPEC)
 		(*format)++;
-	if (**format != 's' && **format != 'd' && **format != 'o' && **format != 'x')
+	if (**format != 's' && **format != 'd' && **format != 'o' && **format != 'x' && **format != 'u' && **format != 'U' && **format != 'i' && **format != 'p')
 		res->p = 0;
 	return (format);
 }

@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:25 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 19:07:24 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/29 14:38:45 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ int	ft_printf(const char *format, ...)
 {
 	va_list ap;
 	t_plchdr *res;
+	int i;
 
 	res = NULL;
 	res = init_res(res);
 	va_start(ap, format);
 	search_format((char**)&format, ap, res);
 	va_end(ap);
-	return (res->size);
+	i = res->size;
+	free(res);
+	return (i);
 }

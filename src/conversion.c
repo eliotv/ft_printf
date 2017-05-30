@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:18 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/27 10:33:50 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/29 21:29:00 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ void uint_conv(char  **format, t_plchdr *res, va_list ap)
 	s = base_conv(res, ap);
 	if (res->width <= 1)
 		res->size += ft_strlen(s);
+	if (res->size < (intmax_t)ft_strlen(s))
+		res->size = ft_strlen(s);
 	put_width_spc(format, s, res);
+	free(s);
 }
 
 void uint_oct_conv(char **format, t_plchdr *res, va_list ap)
@@ -54,6 +57,7 @@ void uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c)
 	if (res->width < (intmax_t)ft_strlen(s) && res->size < (intmax_t)ft_strlen(s))
 		res->size = ft_strlen(s);
 	put_width_spc(format, s, res);
+	free(s);
 }
 
 void pointer_adress(char **format, t_plchdr *res, va_list ap)
@@ -62,12 +66,20 @@ void pointer_adress(char **format, t_plchdr *res, va_list ap)
 	char *hex;
 	char *tmp;
 
-	hex = "0x\0";
+	hex = "0x";
+	res->size += 2;
+	if (res->p == 1 && res->p_width == 0)
+	{
+		ft_putstr(hex);
+		NULL;
+	}
 	s = ft_itoa_base(va_arg(ap, long long), 16);
 	tmp = ft_strjoin(hex, s);
+	free(s);
 	if (res->width <= 1)
 		res->size += ft_strlen(s);
 	put_width_spc(format, tmp, res);
+	free(tmp);
 }
 
 /*
