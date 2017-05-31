@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:18 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/29 21:29:00 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/31 13:51:39 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void uint_conv(char  **format, t_plchdr *res, va_list ap)
 	if (res->size < (intmax_t)ft_strlen(s))
 		res->size = ft_strlen(s);
 	put_width_spc(format, s, res);
-	free(s);
+	ft_strdel(&s);
 }
 
 void uint_oct_conv(char **format, t_plchdr *res, va_list ap)
@@ -33,10 +33,13 @@ void uint_oct_conv(char **format, t_plchdr *res, va_list ap)
 	char *s;
 
 	res->base = 8;
+	if (**format == 'O')
+		res->len = 3;
 	s = base_conv(res, ap);
 	if (res->width <= 1)
 		res->size += ft_strlen(s);
 	put_width_spc(format, s, res);
+	ft_strdel(&s);
 }
 
 void uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c)
@@ -57,7 +60,7 @@ void uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c)
 	if (res->width < (intmax_t)ft_strlen(s) && res->size < (intmax_t)ft_strlen(s))
 		res->size = ft_strlen(s);
 	put_width_spc(format, s, res);
-	free(s);
+	ft_strdel(&s);
 }
 
 void pointer_adress(char **format, t_plchdr *res, va_list ap)
@@ -79,7 +82,7 @@ void pointer_adress(char **format, t_plchdr *res, va_list ap)
 	if (res->width <= 1)
 		res->size += ft_strlen(s);
 	put_width_spc(format, tmp, res);
-	free(tmp);
+	ft_strdel(&tmp);
 }
 
 /*

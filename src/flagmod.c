@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:15 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 19:08:38 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/31 14:38:14 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	flag_finder(char **format, t_plchdr *res)
 */
 void 	hash_handler(char **format, t_plchdr *res)
 {
-	if ((**format == 'o' && res->p == 1) || (**format == 'o' && res->hash == 1))
+	if (((**format == 'o' || **format == 'O') && res->p == 1) || ((**format == 'o' || **format == 'O') && res->hash == 1))
 	{
 		if (res->width == 0)
 			res->size++;
@@ -69,7 +69,7 @@ void 	hash_handler(char **format, t_plchdr *res)
 	}
 }
 
-char	 **minus_flag(char **format, t_plchdr *res)
+char	**minus_flag(char **format, t_plchdr *res)
 {
 	res->minus = 1;
 	(*format)++;
@@ -81,7 +81,7 @@ char	 **minus_flag(char **format, t_plchdr *res)
 	return (format);
 }
 
-char 	**plus_flag(char **format, t_plchdr *res)
+char	**plus_flag(char **format, t_plchdr *res)
 {
 	res->plus = 1;
 	(*format)++;

@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:03 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/30 13:20:30 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/31 13:48:51 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,6 @@ void str_conv(char **format, t_plchdr *res, va_list ap)
 		if (res->size > 0)
 			res->size -= res->p_width;
 	}
-/*	if (res->p == 1 && res->width == 0)
-	{
-		tmp = ft_strlen(s) - res->p_width;
-		if (tmp > 0)
-			res->size += tmp;
-	}*/
 	put_width_spc(format, s, res);
 }
 
@@ -90,12 +84,13 @@ intmax_t get_int(t_plchdr *res, va_list ap)
 		return(va_arg(ap, int));
 }
 
-
 void dec_conv(char **format, t_plchdr *res, va_list ap)
 {
 	intmax_t	nbr;
 	char 		*s;
 
+	if (**format == 'D')
+		res->len = 3;
 	nbr = get_int(res, ap);
 	res->neg = (nbr < 0) ? -1 : 1;
 	s = ft_itoa(nbr);
@@ -104,15 +99,15 @@ void dec_conv(char **format, t_plchdr *res, va_list ap)
 	else if (res->width < (intmax_t)ft_strlen(s))
 		res->size = ft_strlen(s);
 	put_width_spc(format, s, res);
-	free(s);
+	ft_strdel(&s);
 }
 
 char *base_conv(t_plchdr *res, va_list ap)
 {
 	if (res->len == 1)
-		return (ft_un_itoa_base((char)va_arg(ap, unsigned int), res->base));
+		return (ft_un_itoa_base((unsigned char)va_arg(ap, unsigned int), res->base));
 	else if (res->len == 2)
-		return (ft_un_itoa_base((short)va_arg(ap, unsigned int), res->base));
+		return (ft_un_itoa_base((unsigned short)va_arg(ap, unsigned int), res->base));
 	else if (res->len == 3)
 		return (ft_un_itoa_base(va_arg(ap, unsigned long), res->base));
 	else if (res->len == 4)

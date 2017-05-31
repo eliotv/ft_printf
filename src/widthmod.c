@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/30 13:10:01 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/31 14:30:40 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 		else
 			ft_putstr(s);
 		while(n < res->width--)
+		{
+			res->k = ' ';
 			ft_putstr(&res->k);
+		}
 	}
 	else if (n < res->width && res->plus == 1)
 	{
@@ -102,6 +105,8 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 			ft_putchar('0');
 		if (res->p == 1)
 			put_perc(format, s, res);
+		else if (*s == '0')
+			NULL;
 		else
 			ft_putstr(s);
 	}
@@ -133,6 +138,11 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 		else
 			while (n < res->width)
 			{
+				if (res->sf == 1)
+				{
+					ft_putchar(' ');
+					res->width--;
+				}
 				ft_putstr(&res->k);
 				res->width--;
 				if (res->null == 1 && res->p == 0 && **format == 'c')
@@ -154,21 +164,21 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 			hash_handler(format, res);
 		if (res->p == 1)
 			put_perc(format, s, res);
-		else if (res->p_width == -1 && *s == '0' && res->hash == 0)
+		else if (res->p_width == -1 && *s == '0' && res->hash == 0 && res->sf == 0)
 			ft_putchar(' ');
 		else
 			ft_putstr(s);
 	}
 	else
 	{
-		if (res->plus == 1 && *s != '-' && **format != 'u')
+		if (res->plus == 1 && *s != '-' && **format != 'u' && **format != 'p' && **format != 'o' && **format != 'O' && **format != 'X' && **format != 'x')
 		{
 			ft_putchar('+');
 			res->size++;
 		}
 		if (res->hash == 1 && *s != '0')
 			hash_handler(format, res);
-		if (*s == '0' && res->p == 1 && **format != 'o' && res->hash == 1)
+		if (*s == '0' && res->p == 1 && **format != 'o' && **format != 'O' && res->hash == 1)
 			NULL;
 		if (DIG_MOD)
 		{
@@ -193,7 +203,7 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 			put_perc(format, s, res);
 		else if (res->p == 1 && res->p_width <= 0 && *s == '0')
 		{
-			if (**format == 'o' && res->hash == 1)
+			if ((**format == 'o' || **format == 'O') && res->hash == 1)
 				ft_putstr(s);
 			else
 			{
@@ -212,7 +222,7 @@ char	**get_width_len(char **format, t_plchdr *res)
 {
 	res->width = ft_atoi(*format);
 	res->size += res->width;
-	while (!F_SPEC)
+	while (NUM_MOD || **format == '.' || **format == '*')
 	{
 		if (**format == '.')
 		{

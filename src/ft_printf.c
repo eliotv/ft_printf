@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:25 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/30 13:04:27 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/31 15:48:27 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	search_format(char **format, va_list ap, t_plchdr *res)
 			i += res->size;
 			res = init_res(res);
 			(*format)++;
-			while (!F_SPEC)
+			while ((FLG_MOD || NUM_MOD || **format == '.' || **format == '*' || L_MOD) && **format)
 			{
 				if (FLG_MOD)
 					flag_finder(format, res);

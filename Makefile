@@ -34,8 +34,8 @@ LFTFL = ft_strlen.c \
 		ft_count_unint_len.c \
 		ft_strnew.c \
 		ft_strcat.c \
-		ft_strncpy.c
-
+		ft_strncpy.c \
+		ft_strdel.c
 PFSR = $(addprefix $(PFDR), $(PFFL))
 
 LFSR = $(addprefix $(LFTDR), $(LFTFL))

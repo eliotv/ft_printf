@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:27 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 18:34:42 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/30 16:42:08 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	function_hndlr(char **format, va_list ap, t_plchdr *res)
 	if (c == 'x' || c == 'X')
 		uint_hex_conv(format, res, ap, c);
 	if (c == 'p')
-		pointer_adress(format, res, ap);
+			pointer_adress(format, res, ap);
 //	if (c == 'S')
 //		wchar_conv(res, ap);
 //	if (**format != '%')
@@ -39,22 +39,25 @@ void	function_hndlr(char **format, va_list ap, t_plchdr *res)
 
 void	flag_finder(char **format, t_plchdr *res)
 {
-	if (**format == '#')
+	while (FLG_MOD)
 	{
-		res->hash = 1;
-		(*format)++;
-	}
-	if (**format == '-')
-		minus_flag(format, res);
-	if (**format == '+')
-		plus_flag(format, res);
-	if (**format == '0')
-		zero_flag(format, res);
-	if (**format == ' ')
-	{
-		res->sf = 1;
-		res->k = ' ';
-		while (**format == ' ')
+		if (**format == '#')
+		{
+			res->hash = 1;
 			(*format)++;
+		}
+		if (**format == '-')
+			minus_flag(format, res);
+		if (**format == '+')
+			plus_flag(format, res);
+		if (**format == '0')
+			zero_flag(format, res);
+		if (**format == ' ')
+		{
+			res->sf = 1;
+			res->k = ' ';
+			while (**format == ' ')
+				(*format)++;
+		}
 	}
 }
