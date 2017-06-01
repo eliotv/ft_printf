@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:18 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/31 13:51:39 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/31 20:31:18 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,3 @@ void pointer_adress(char **format, t_plchdr *res, va_list ap)
 	put_width_spc(format, tmp, res);
 	ft_strdel(&tmp);
 }
-
-/*
-void wchar_conv(t_plchdr res, va_list ap)
-{
-	char *s;
-
-	s = (va_arg(ap, wchar_t*));
-	put_width_spc(s, &res);
-}*/

@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/30 12:04:43 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/31 21:33:15 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_plchdr			*init_res(t_plchdr *res);
 */
 int					ft_printf(char const *format, ...);
 void				search_format(char **format, va_list ap, t_plchdr *res);
+void  			search_flg_mod(char **format, va_list ap, t_plchdr *res);
 /*
 **   ------------------  conversion2.c  ----------------
 */
@@ -79,6 +80,10 @@ void				flag_finder(char **format, t_plchdr *res);
 **   -------------------  lengthmod.c  -----------------
 */
 char				length_mod_ck(char **format, t_plchdr *res);
+void				h_mod(char **format, t_plchdr *res);
+void				ll_mod(char **format, t_plchdr *res);
+void				z_mod(char **format, t_plchdr *res);
+void				j_mod(char **format, t_plchdr *res);
 /*
 **   -------------------  widthmod.c  ------------------
 */

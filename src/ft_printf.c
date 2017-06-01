@@ -6,11 +6,25 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:25 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/31 15:48:27 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/05/31 21:19:19 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	search_flg_mod(char **format, va_list ap, t_plchdr *res)
+{
+	if (FLG_MOD)
+		flag_finder(format, res);
+	if (NUM_MOD)
+		get_width_len(format, res);
+	if (**format == '.')
+		perc_num(format, res, ap);
+	if (**format == '*')
+		width_mod(format, ap, res);
+	if (!F_SPEC)
+		length_mod_ck(format, res);
+}
 
 void	search_format(char **format, va_list ap, t_plchdr *res)
 {
@@ -25,18 +39,7 @@ void	search_format(char **format, va_list ap, t_plchdr *res)
 			res = init_res(res);
 			(*format)++;
 			while ((FLG_MOD || NUM_MOD || **format == '.' || **format == '*' || L_MOD) && **format)
-			{
-				if (FLG_MOD)
-					flag_finder(format, res);
-				if (NUM_MOD)
-					get_width_len(format, res);
-				if (**format == '.')
-					perc_num(format, res, ap);
-				if (**format == '*')
-					width_mod(format, ap, res);
-				if (!F_SPEC)
-					length_mod_ck(format, res);
-			}
+				search_flg_mod(format, ap, res);
 			if (F_SPEC)
 				function_hndlr(format, ap, res);
 		}
