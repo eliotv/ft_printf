@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/31 14:30:40 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:08:56 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 		else if (*s == '0')
 			NULL;
 		else
-			ft_putstr(s);
+			write(1, s, n);
 	}
 	else if (n < res->width)
 	{
@@ -143,6 +143,8 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 					ft_putchar(' ');
 					res->width--;
 				}
+				if (**format == 'i')
+					res->k = '0';
 				ft_putstr(&res->k);
 				res->width--;
 				if (res->null == 1 && res->p == 0 && **format == 'c')

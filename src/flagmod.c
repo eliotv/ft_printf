@@ -6,47 +6,12 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:15 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/31 14:38:14 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:42:30 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-/*
-void	flag_finder(char **format, t_plchdr *res)
-{
-		if (**format == '#')
-		{
-			(*format)++;
-			res->hash = 1;
-		}
-		if (**format == '-')
-			minus_flag(format, res);
-		if (**format == '+')
-		{
-			res->plus = 1;
-			(*format)++;
-			if (**format == '+')
-				(*format)++;
-			if (**format =='-')
-			{
-				res->minus = 1;
-				(*format)++;
-			}
-		}
-		if (**format == '0' && res->plus == 1 && res->minus == 0)
-		{
-			res->k = '0';
-			(*format)++;
-		}
-		else if (**format == '0')
-			(*format)++;
-		if (**format == ' ')
-		{
-			res->k = ' ';
-			(**format)++;
-		}
-}
-*/
+
 void 	hash_handler(char **format, t_plchdr *res)
 {
 	if (((**format == 'o' || **format == 'O') && res->p == 1) || ((**format == 'o' || **format == 'O') && res->hash == 1))

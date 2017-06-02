@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/31 21:33:15 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:42:47 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_plchdr			*init_res(t_plchdr *res);
 **   -------------------  ft_printf.c  -----------------
 */
 int					ft_printf(char const *format, ...);
-void				search_format(char **format, va_list ap, t_plchdr *res);
+int				search_format(char **format, va_list ap, t_plchdr *res);
 void  			search_flg_mod(char **format, va_list ap, t_plchdr *res);
 /*
 **   ------------------  conversion2.c  ----------------

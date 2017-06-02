@@ -8,13 +8,13 @@ char	*ft_un_itoa_base(uintmax_t value, int base)
 
 	len = ft_count_unint_len(value, base);
 	n = value;
+	if (n == 0)
+		return (ft_strdup("0"));
 	str = (char*)ft_memalloc(len + 1);
 	if (!str)
 		return (0);
 	len--;
 	str[len] = '\0';
-	if (n == 0)
-		str[0] = '0';
 	while (n > 0)
 	{
 		if (n % base <= 9)

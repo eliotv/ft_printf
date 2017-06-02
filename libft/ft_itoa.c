@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:02:38 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/30 13:20:11 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/01 14:00:52 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ char			*ft_itoa(intmax_t n)
 		num = n * -1;
 	else
 		num = n;
+	if (num == 0)
+		return(ft_strdup("0"));
 	str = (char*)malloc(len);
 	if (!str)
 		return (0);
 	len--;
 	str[len] = '\0';
-	if (num == 0)
-		str[0] = '0';
 	if (neg == 1)
 		str[0] = '-';
 	while (num > 0)

@@ -4,5 +4,7 @@
 //#include <locale.h>
 int main(void)
 {
-	ft_printf("% 0d", -42);
+	printf("\t%d", ft_printf("@moulitest: %s", NULL));
+	ft_putchar('\n');
+	printf("\t%d", printf("@moulitest: %s", NULL));
 }

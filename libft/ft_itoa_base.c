@@ -8,13 +8,13 @@ char	*ft_itoa_base(intmax_t value, int base)
 
 	len = ft_count_int_len(value, base);
 	n = value;
+	if (n == 0)
+		return (ft_strdup("0"));
 	str = (char*)malloc(len + 1);
 	if (!str)
 		return (0);
 	len--;
 	str[len] = '\0';
-	if (n == 0)
-		str[0] = '0';
 	if (n < 0)
 	{
 		n *= -1;

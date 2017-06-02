@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:25 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/31 21:19:19 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:43:41 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	search_flg_mod(char **format, va_list ap, t_plchdr *res)
 		length_mod_ck(format, res);
 }
 
-void	search_format(char **format, va_list ap, t_plchdr *res)
+int	search_format(char **format, va_list ap, t_plchdr *res)
 {
 	int i;
 
@@ -43,14 +43,14 @@ void	search_format(char **format, va_list ap, t_plchdr *res)
 			if (F_SPEC)
 				function_hndlr(format, ap, res);
 		}
-		(**format) ? ft_putchar(**format) : 0;
+		(**format != '\0' && **format != '%') ? ft_putchar(**format) : 0;
 		if (**format && **format != '%')
 		{
 			res->size++;
 			(*format)++;
 		}
 	}
-	res->size += i;
+	return(i += res->size);
 }
 
 int	ft_printf(const char *format, ...)
@@ -59,12 +59,13 @@ int	ft_printf(const char *format, ...)
 	t_plchdr *res;
 	int i;
 
+	i = 0;
 	res = NULL;
 	res = init_res(res);
 	va_start(ap, format);
-	search_format((char**)&format, ap, res);
+	i = search_format((char**)&format, ap, res);
 	va_end(ap);
-	i = res->size;
-	free(res);
+//	if (res)
+	//	free(res);
 	return (i);
 }
