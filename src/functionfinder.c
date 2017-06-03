@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:27 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/01 09:50:45 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/02 20:52:51 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	function_hndlr(char **format, va_list ap, t_plchdr *res)
 	c = (**format);
 	if (c == 'c' || c == 'C' || c == '%')
 		char_conv(format, res, ap);
-	if (c == 's')
+	if (c == 's' || c == 'S')
 		str_conv(format, res, ap);
 	if (c == 'd' || c == 'D' || c == 'i')
 		dec_conv(format, res, ap);
@@ -30,11 +30,8 @@ void	function_hndlr(char **format, va_list ap, t_plchdr *res)
 	if (c == 'x' || c == 'X')
 		uint_hex_conv(format, res, ap, c);
 	if (c == 'p')
-			pointer_adress(format, res, ap);
-//	if (c == 'S')
-//		wchar_conv(res, ap);
-//	if (**format != '%')
-		(*format)++;
+		pointer_adress(format, res, ap);
+	(*format)++;
 }
 
 void	flag_finder(char **format, t_plchdr *res)

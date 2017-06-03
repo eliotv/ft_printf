@@ -14,7 +14,9 @@ PFFL = build.c \
 	   functionfinder.c \
 	   lengthmod.c \
 	   percisionmod.c \
-	   widthmod.c
+	   widthmod.c \
+	   print.c \
+	   print2.c
 
 LFTFL = ft_strlen.c \
 		ft_atoi.c \
@@ -28,7 +30,7 @@ LFTFL = ft_strlen.c \
 		ft_memalloc.c \
 		ft_isspace.c \
 		ft_bzero.c \
-		ft_un_itoa_base.c \
+		ft_u_itoa_bs.c \
 		ft_strcmp.c \
 		ft_strndup.c \
 		ft_count_unint_len.c \

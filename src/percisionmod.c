@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:33 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 19:05:54 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/02 20:33:07 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,25 @@ void	put_perc(char **format, char *str, t_plchdr *res)
 	else
 		while (i < res->p_width && str[i])
 			write(1, &str[i++], 1);
+}
+
+int		percision_mod(char **format, t_plchdr *res, char *s, int n)
+{
+	char *tmp;
+
+	tmp = NULL;
+	if (**format == 's')
+	{
+		tmp = ft_strndup(s, res->p_width);
+		n = ft_strlen(tmp);
+	}
+	if (res->plus == 1 && res->minus == 0)
+	{
+		n = res->p_width - 1;
+		if (res->hash == 0)
+			res->width--;
+	}
+	else if (n < 0)
+		n = res->p_width;
+	return (n);
 }

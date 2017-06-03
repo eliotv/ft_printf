@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char	*ft_un_itoa_base(uintmax_t value, int base)
+char	*ft_u_itoa_bs(uintmax_t value, int base)
 {
 	uintmax_t n;
 	int len;

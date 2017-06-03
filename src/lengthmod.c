@@ -6,13 +6,13 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:28 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/31 21:25:00 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/02 21:35:56 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void h_mod(char **format, t_plchdr *res)
+void	h_mod(char **format, t_plchdr *res)
 {
 	if (**format == 'h' && res->len < 2)
 	{
@@ -26,7 +26,7 @@ void h_mod(char **format, t_plchdr *res)
 	}
 }
 
-void ll_mod(char **format, t_plchdr *res)
+void	ll_mod(char **format, t_plchdr *res)
 {
 	if (res->len < 3 && **format == 'l')
 	{
