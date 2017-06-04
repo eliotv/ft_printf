@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:03 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/02 12:18:30 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/03 17:59:04 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,22 @@ void						char_conv(char **format, t_plchdr *res, va_list ap)
 	put_width_spc(format, c, res);
 }
 
-void						str_conv(char **format, t_plchdr *res, va_list ap)
+void					str_conv(char **format, t_plchdr *res, va_list ap)
 {
-	char					*s;
+	char				*s;
 	intmax_t			tmp;
 
 	tmp = 0;
 	s = va_arg(ap, char*);
-	if (!s)
-	{
+	if (!s && (res->null = 1) && (res->size += 6))
 		s = ft_strdup("(null)");
-		res->size += 6;
-	}
 	else if (res->p == 1 && res->width == 0)
 	{
 		if (res->p_width > (intmax_t)ft_strlen(s))
 			tmp = res->p_width - ft_strlen(s);
 		else if ((intmax_t)ft_strlen(s) > res->p_width)
 			tmp = (ft_strlen(s) - res->p_width);
-		if (tmp > 0 && ft_strlen(s) > 0)
-			res->size += tmp;
+		(tmp > 0 && ft_strlen(s) > 0) ? res->size += tmp : 0;
 	}
 	else if (res->width == 0 && res->minus == 0)
 	{
@@ -63,6 +59,7 @@ void						str_conv(char **format, t_plchdr *res, va_list ap)
 		(res->size > 0) ? res->size -= res->p_width : 0;
 	}
 	put_width_spc(format, s, res);
+	(res->null == 1) ? free(s) : 0;
 }
 
 intmax_t			get_int(t_plchdr *res, va_list ap)
@@ -85,7 +82,7 @@ intmax_t			get_int(t_plchdr *res, va_list ap)
 
 void					dec_conv(char **format, t_plchdr *res, va_list ap)
 {
-	intmax_t		nbr;
+	intmax_t			nbr;
 	char				*s;
 
 	if (**format == 'D')
@@ -97,6 +94,8 @@ void					dec_conv(char **format, t_plchdr *res, va_list ap)
 		res->size += ft_strlen(s);
 	else if (res->width < (intmax_t)ft_strlen(s))
 		res->size = ft_strlen(s);
+	else if (res->p_width > res->width && res->width > (intmax_t)ft_strlen(s))
+		res->size = ft_strlen(s) + 1;
 	put_width_spc(format, s, res);
 	ft_strdel(&s);
 }
@@ -104,9 +103,11 @@ void					dec_conv(char **format, t_plchdr *res, va_list ap)
 char					*base_conv(t_plchdr *res, va_list ap)
 {
 	if (res->len == 1)
-		return (ft_u_itoa_bs((unsigned char)va_arg(ap, unsigned int), res->base));
+		return (ft_u_itoa_bs((unsigned char)va_arg(ap, unsigned int),
+			res->base));
 	else if (res->len == 2)
-		return (ft_u_itoa_bs((unsigned short)va_arg(ap, unsigned int), res->base));
+		return (ft_u_itoa_bs((unsigned short)va_arg(ap, unsigned int),
+			res->base));
 	else if (res->len == 3)
 		return (ft_u_itoa_bs(va_arg(ap, unsigned long), res->base));
 	else if (res->len == 4)
