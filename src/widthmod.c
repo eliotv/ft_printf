@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/02 22:39:03 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/03 19:06:47 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 	intmax_t n;
 
 	n = ft_strlen(s);
-	if (n == 0  && s == 0)
+	if (n == 0 && s == 0)
 		n = 1;
 	if (n == 0)
 		res->p_width = 0;

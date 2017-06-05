@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:18 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/02 10:04:21 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/03 18:48:42 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,25 @@ void			uint_oct_conv(char **format, t_plchdr *res, va_list ap)
 
 void			uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c)
 {
-	char 		*s;
-	int 		i;
+	char		*s;
+	int			i;
 
 	res->base = 16;
 	s = base_conv(res, ap);
-	if(c == 'X')
+	if (c == 'X')
 	{
 		i = -1;
 		while (s[++i])
 			s[i] = ft_toupper(s[i]);
 	}
-	if (res->width <= 1)
-		res->size += ft_strlen(s);
-	if (res->width < (intmax_t)ft_strlen(s) && res->size < (intmax_t)ft_strlen(s))
-		res->size = ft_strlen(s);
+	(res->width <= 1) ? res->size += ft_strlen(s) : 0;
+	(res->width < (intmax_t)ft_strlen(s) && res->size < (intmax_t)ft_strlen(s))
+		? res->size = ft_strlen(s) : 0;
 	put_width_spc(format, s, res);
 	ft_strdel(&s);
 }
 
-void pointer_adress(char **format, t_plchdr *res, va_list ap)
+void	pointer_adress(char **format, t_plchdr *res, va_list ap)
 {
 	char *s;
 	char *hex;
@@ -79,8 +78,7 @@ void pointer_adress(char **format, t_plchdr *res, va_list ap)
 	s = ft_itoa_base(va_arg(ap, long long), 16);
 	tmp = ft_strjoin(hex, s);
 	free(s);
-	if (res->width <= 1)
-		res->size += ft_strlen(s);
+	(res->width <= 1) ? res->size += ft_strlen(tmp) : 0;
 	put_width_spc(format, tmp, res);
 	ft_strdel(&tmp);
 }

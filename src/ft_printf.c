@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:25 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/03 14:22:29 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/03 19:31:22 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		search_format(char **format, va_list ap, t_plchdr *res)
 		while (**format == '%')
 		{
 			i += res->size;
-			res = init_res(res);
+			ft_bzero(res, sizeof(res));
 			(*format)++;
 			while ((FLG_MOD || NUM_MOD || **format == '.' || **format == '*' ||
 				L_MOD) && **format)
@@ -59,14 +59,14 @@ int		ft_printf(const char *format, ...)
 	va_list		ap;
 	t_plchdr	*res;
 	int			i;
-	
+
 	i = 0;
 	res = NULL;
 	res = init_res(res);
 	va_start(ap, format);
 	i = search_format((char**)&format, ap, res);
 	va_end(ap);
-	if (res)
-		free(res);
+//	if (res)
+//		free(res);
 	return (i);
 }
