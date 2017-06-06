@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:33 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/02 20:33:07 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/05 20:01:51 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ void	put_perc(char **format, char *str, t_plchdr *res)
 
 	i = 0;
 	n = ft_strlen(str);
+	while (res->width > res->p_width && **format == 's')
+	{
+		if (res->minus == 1)
+		{
+			while (i < res->p_width && str[i])
+				write(1, &str[i++], 1);
+		}
+		ft_putstr(&res->k);
+		res->width--;
+	}
 	if (**format != 's')
 	{
 		if (i < res->p_width && str[i])
@@ -49,10 +59,10 @@ int		percision_mod(char **format, t_plchdr *res, char *s, int n)
 	char *tmp;
 
 	tmp = NULL;
-	if (**format == 's')
+	if (**format == 's' && res->width == 0)
 	{
 		tmp = ft_strndup(s, res->p_width);
-		n = ft_strlen(tmp);
+		res->size = ft_strlen(tmp);
 	}
 	if (res->plus == 1 && res->minus == 0)
 	{
@@ -60,7 +70,13 @@ int		percision_mod(char **format, t_plchdr *res, char *s, int n)
 		if (res->hash == 0)
 			res->width--;
 	}
-	else if (n < 0)
-		n = res->p_width;
+	res->size = (res->p_width > res->width) ? res->p_width : res->width;
+	(res->p_width > (intmax_t)ft_strlen(s) && **format == 's' &&
+		res->p_width > res->width) ? res->size = (intmax_t)ft_strlen(s) : 0;
+	if (DIG_MOD && (intmax_t)ft_strlen(s) > res->p_width)
+		res->size = (intmax_t)ft_strlen(s);
+	if (res->p_width > res->width && res->width > (intmax_t)ft_strlen(s))
+		res->size = res->width;
+	(n < 0) ? n = res->p_width : 0;
 	return (n);
 }

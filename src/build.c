@@ -6,16 +6,18 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/05/28 19:23:42 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/05 13:20:07 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-t_plchdr	*init_res(t_plchdr *res)
+t_plchdr		*init_res(t_plchdr *res)
 {
-	if (res != NULL)
+
+	if (res)
 		free(res);
+	res = NULL;
 	res = (t_plchdr*)malloc(sizeof(t_plchdr));
 	res->len = 0;
 	res->width = 0;

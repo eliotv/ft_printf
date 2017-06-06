@@ -4,6 +4,13 @@
 //#include <locale.h>
 int main(void)
 {
-	printf("\t%d\n", ft_printf("@moulitest: %s", NULL));
-	printf("\t%d\n", printf("@moulitest: %s", NULL));	
+//	printf("\t%d\n", ft_printf("%.4s", "42"));
+//	printf("\t%d\n", printf("%.4s", "42"));	
+//
+
+//	printf("\t%d\n", ft_printf("%15.4s", "42"));	
+//	printf("\t%d\n", printf("%15.4s", "42"));
+//
+	printf("\t%d\n", ft_printf("%4.15s", "42"));	
+	printf("\t%d\n", printf("%4.15s", "42"));	
 }

@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 20:13:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/03 19:03:07 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/05 19:06:25 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	width_flg(char **format, t_plchdr *res, char *s, int n)
 {
+	intmax_t k;
+
+	k = 0;
 	(res->hash == 1 && res->p == 0 && **format != 's' && (**format != 'd' ||
 		**format != 'i') && **format != 'o') ? res->width-- : 0;
 	(res->hash == 1 && ((**format == 'o') || (**format == 'x') ||
@@ -29,11 +32,11 @@ void	width_flg(char **format, t_plchdr *res, char *s, int n)
 	{
 		res->k = ' ';
 		(*s == '-') ? res->p_width++ : 0;
-		while (res->p_width < res->width--)
-		{
+		k = (res->p_width > (intmax_t)ft_strlen(s) && **format == 's') ?
+			ft_strlen(s) : res->p_width;
+		while (k < res->width--)
 			ft_putstr(&res->k);
-		}
-		res->size--;
+		(**format == 'd') ? res->size-- : 0;
 	}
 	width_flg_2(format, res, s, n);
 }

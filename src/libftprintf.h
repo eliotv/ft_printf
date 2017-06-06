@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/02 22:51:24 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/05 16:10:40 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ t_plchdr			*init_res(t_plchdr *res);
 **   -------------------  ft_printf.c  -----------------
 */
 int					ft_printf(char const *format, ...);
-int				search_format(char **format, va_list ap, t_plchdr *res);
+int				search_format(char **format, va_list ap);
 void  			search_flg_mod(char **format, va_list ap, t_plchdr *res);
+void			print_format(char **format, t_plchdr *res);
 /*
 **   ------------------  conversion2.c  ----------------
 */
@@ -107,6 +108,7 @@ void				space_flag(char **format, char *s, t_plchdr *res);
 char				**perc_num(char **format, t_plchdr *res, va_list ap);
 void				put_perc(char **format, char *str, t_plchdr *res);
 int					percision_mod(char **format, t_plchdr *res, char *s, int n);
+//void				pec_mod_size(t_plchdr *res, char *s);
 /*
 **	--------------------	printf.c	----------------
 */
