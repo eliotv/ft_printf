@@ -11,6 +11,8 @@ int main(void)
 //	printf("\t%d\n", ft_printf("%15.4s", "42"));	
 //	printf("\t%d\n", printf("%15.4s", "42"));
 //
-//	printf("\t%d\n", ft_printf("%d", "Lydie"));	
-//	printf("\t%d\n", printf("%d", "Lydie"));	
+	printf("\t%d\n", ft_printf("%4.3d", 42));	
+	printf("\t%d\n", printf("%4.3d", 42));	
+	printf("\t%d\n", ft_printf("%4.2d", 42));	
+	printf("\t%d\n", printf("%4.2d", 42));	
 }

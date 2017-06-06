@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 20:13:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/05 20:51:55 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/05 21:17:06 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	width_flg_2(char **format, t_plchdr *res, char *s, int n)
 		}
 		if (res->width-- >= res->p_width)
 			ft_putstr(&res->k);
-		res->k = res->k == '0' && res->p_width != 0 ? ' ' : res->k;;
+		res->k = res->k == '0' && res->p_width != 0 ? ' ' : res->k;
 		(res->null == 1 && res->p == 0 && **format == 'c') ?
 			res->width-- : 0;
 	}
@@ -77,6 +77,6 @@ char	*width_num(t_plchdr *res, char **s, int n)
 		(*s)++;
 	}
 	while (res->p_width-- > n)
-		ft_putchar('0');
+		ft_putstr("0");
 	return (*s);
 }
