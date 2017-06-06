@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:15 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/05 13:21:41 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/05 20:58:42 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ char	**zero_flag(char **format, t_plchdr *res)
 {
 	if (**format == '0' && res->minus == 0)
 	{
-		res->k = '0';
-		(*format)++;
+			res->k = '0';
+			(*format)++;
 	}
 	else if (**format == '0')
 		(*format)++;
