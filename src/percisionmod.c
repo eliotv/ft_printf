@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:33 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/05 20:46:35 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/07 13:28:54 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int		percision_mod(char **format, t_plchdr *res, char *s, int n)
 		if (res->hash == 0)
 			res->width--;
 	}
-	res->size = (res->p_width > res->width) ? res->p_width : res->width;
+	res->size = (res->p_width > res->width) ?
+		res->p_width : res->width;
 	(res->p_width > (intmax_t)ft_strlen(s) && **format == 's' &&
 		res->p_width > res->width) ? res->size = (intmax_t)ft_strlen(s) : 0;
 	if (DIG_MOD && (intmax_t)ft_strlen(s) > res->p_width)
@@ -79,4 +80,45 @@ int		percision_mod(char **format, t_plchdr *res, char *s, int n)
 		res->size = res->width;
 	(n < 0) ? n = res->p_width : 0;
 	return (n);
+}
+
+void	perc_p_mod(t_plchdr *res, char *s, char **format)
+{
+	if (res->p_width > res->width && (F_T == 'p'))
+	{
+		res->size = res->p_width;
+		if (F_T == 'p')
+			res->size += 2;
+	}
+	while (res->p_width > (intmax_t)ft_strlen(s) && F_T != 's')
+	{
+		ft_putchar('0');
+		res->p_width--;
+	}
+}
+
+char	*perc_p_join(char *s, t_plchdr *res)
+{
+	char	*tmp;
+	char	*str;
+	int		i;
+	int		k;
+
+	k = 0;
+	i = 0;
+	str = NULL;
+	tmp = NULL;
+	if (res->p_width > (intmax_t)ft_strlen(s))
+	{
+		i = res->p_width - (intmax_t)ft_strlen(s);
+		tmp = ft_strnew(i + 1);
+		while (i > k)
+		{
+			tmp[k] = '0';
+			k++;
+		}
+		str = ft_strjoin(tmp, s);
+		res->size += (intmax_t)ft_strlen(str);
+	}
+	return (str);
 }

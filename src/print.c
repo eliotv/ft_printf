@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 18:27:13 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/05 16:32:49 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/07 13:26:25 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	print_edge(char **format, t_plchdr *res, char *s, int n)
 	{
 		while (res->width-- > res->p_width)
 			ft_putstr(&res->k);
+		perc_p_mod(res, s, format);
 		put_perc(format, s, res);
 	}
 	else if (res->p == 1 && res->p_width <= 0 && *s == '0')
@@ -98,6 +99,7 @@ void	print_edge(char **format, t_plchdr *res, char *s, int n)
 
 char	*edge_num_mod(t_plchdr *res, char **s, int n)
 {
+	(res->neg == -1) ? res->p_width-- : 0;
 	while (res->p_width > n)
 	{
 		if (**s == '-')

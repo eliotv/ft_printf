@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:18 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/05 13:36:12 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:58:03 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,21 @@ void	pointer_adress(char **format, t_plchdr *res, va_list ap)
 	char *hex;
 	char *tmp;
 
+	tmp = NULL;
 	hex = "0x";
-	res->size += 2;
+
 	if (res->p == 1 && res->p_width == 0)
 	{
 		ft_putstr(hex);
-		NULL;
+		res->size = 2;
+		return ;
 	}
 	s = ft_itoa_base(va_arg(ap, long long), 16);
+	if (*s != 0 && res->p_width > (intmax_t)ft_strlen(s))
+		s = perc_p_join(s, res);
 	tmp = ft_strjoin(hex, s);
 	free(s);
-	(res->width <= 1) ? res->size += ft_strlen(tmp) - 2 : 0;
+	(res->width <= 1) ? res->size += ft_strlen(tmp) : 0;
 	put_width_spc(format, tmp, res);
 	ft_strdel(&tmp);
 }
