@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 20:13:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/07 13:26:22 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:49:43 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	width_flg_2(char **format, t_plchdr *res, char *s, int n)
 			res->width-- : 0;
 	}
 	if (DIG_MOD)
-		width_num(res, &s, n);
+		width_num(format, res, &s, n);
 	(res->k == ' ') ? hash_handler(format, res) : 0;
 	if (res->p == 1)
 		put_perc(format, s, res);
@@ -67,10 +67,10 @@ void	width_flg_2(char **format, t_plchdr *res, char *s, int n)
 		ft_putstr(s);
 }
 
-char	*width_num(t_plchdr *res, char **s, int n)
+char	*width_num(char **format, t_plchdr *res, char **s, int n)
 {
-	(res->p_width > res->width) ?
-	res->size += res->p_width - res->width : 0;
+	((res->p_width > res->width) && (F_T != 'o' && F_T != 'O' && F_T != 'x' &&
+	F_T != 'X')) ? res->size += res->p_width - res->width : 0;
 	if (**s == '-')
 	{
 		ft_putchar(**s);

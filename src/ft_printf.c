@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:25 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/05 13:22:51 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/07 14:59:27 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		search_format(char **format, va_list ap)
 			res = init_res(res);
 			(*format)++;
 			search_flg_mod(format, ap, res);
-			(F_SPEC) ? function_hndlr(format, ap, res) : 0;
+			(F_SPEC) ? function_hndlr(format, ap, res) : (res->size = 0);
 		}
 		print_format(format, res);
 	}

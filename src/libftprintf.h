@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/07 13:26:17 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:29:03 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,6 @@ void				edge_p_width(char **format, char *s, t_plchdr *res);
 */
 void				width_flg(char **format, t_plchdr *res, char *s, int n);
 void				width_flg_2(char **format, t_plchdr *res, char *s, int n);
-char				*width_num(t_plchdr *res, char **s, int n);
+char				*width_num(char **format, t_plchdr *res, char **s, int n);
 
 #endif

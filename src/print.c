@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 18:27:13 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/07 13:26:25 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:09:07 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	neg_flg_width(char **format, t_plchdr *res, char *s, int n)
 	}
 	if (DIG_MOD)
 	{
-		(res->p_width > res->width) ?
-			res->size += res->p_width - res->width : 0;
 		while (res->p_width-- > n)
 		{
 			ft_putchar('0');

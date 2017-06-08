@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/07 13:26:21 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:39:36 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ char	**perc_width(char **format, t_plchdr *res)
 	res->p_width = ft_atoi(*format);
 	while (!F_SPEC)
 		(*format)++;
-	if (**format != 's' && **format != 'd' && **format != 'o' && **format != 'x'
-	&& **format != 'u' && **format != 'U' && **format != 'i' && **format != 'p')
+	if (F_T != 's' && F_T != 'd' && F_T != 'o' && F_T != 'x' && F_T != 'u' &&
+		F_T != 'U' && F_T != 'i' && F_T != 'p' && F_T != 'O' && F_T != 'X')
 		res->p = 0;
 	return (format);
 }
