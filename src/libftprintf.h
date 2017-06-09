@@ -6,14 +6,17 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/09 12:00:44 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 14:17:14 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
-#	define F_T (**format)
-# define F_SPEC (F_T == 'c' || F_T == 'd' || F_T == 's' || F_T == 'u' || F_T == 'p' || F_T == 'i' || F_T == 'o' || F_T == 'x' || F_T == 'O' || F_T == 'U' || F_T == 'X' || F_T == 'C' ||F_T == 'S' || F_T == 'D' || F_T == '%')
+# define F_T (**format)
+# define L_S (F_T == 'c' || F_T == 's' || F_T == 'p' || F_T == '%')
+# define F_SPEC (F_T == 'C' || F_T == 'S' || DIG_MOD || L_S)
+
+
 
 # define L_MOD (F_T == 'h' || F_T == 'l' || F_T == 'z' || F_T == 'j')
 
@@ -21,15 +24,20 @@
 
 # define NUM_MOD (F_T >= '0' && F_T <= '9')
 
-# define FLG_MOD (F_T == '-' || F_T == '0' || F_T == ' ' || F_T == '#' || F_T == '+')
+# define FLG_MOD (F_T == '-' || F_T == '0' || F_T == ' ' || F_M)
+# define F_M (F_T == '#' || F_T == '+')
 
-# define DIG_MOD (F_T == 'i' || F_T == 'D' || F_T == 'd' || F_T == 'x' || F_T == 'X' || F_T == 'o' || F_T == 'O' || F_T =='u' || F_T == 'U')
+# define DIG_MOD (D_M || D_M1)
+# define D_M1 (F_T == 'X' || F_T == 'D' || F_T == 'O' || F_T == 'U')
+# define D_M (F_T == 'i' || F_T == 'o' || F_T == 'd' || F_T =='u' || F_T == 'x')
 
-# define ALL_MOD (F_T == 'h' || F_T == 'l' || F_T == 'z' || F_T == 'j' || F_T == '-' || F_T == '0' || F_T == ' ' || F_T == '#' || F_T == '+' || F_T == '.' || F_T == '*' || (F_T >= '0' && F_T <= 9))
+# define ALL_MOD (L_MOD || FLG_MOD || F_T == '.' || F_T == '*' || N_M)
+# define N_M ((F_T >= '0' && F_T <= 9))
 
 # include "../libft/libft.h"
 # include <stdarg.h>
 # include <limits.h>
+
 typedef struct		s_plchdr
 {
 	char			k;// storing ' ' or '0' for printing
