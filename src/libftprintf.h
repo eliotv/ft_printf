@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/09 15:30:37 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:35:49 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@
 
 typedef struct		s_plchdr
 {
-	char			k;// storing ' ' or '0' for printing
-	intmax_t		sf;//space flag
-	intmax_t		width;//width mod
-	intmax_t		len;//len mod
-	intmax_t		size;//return size
-	intmax_t		plus;// if '+' set value 1
-	intmax_t		minus;// if '-' set value 1
-	intmax_t		p;//percision on/off
-	intmax_t		p_width;// width of percision
-	intmax_t		hash;// if '#' set value 1
-	intmax_t		neg;// negative numbers
-	intmax_t		base;// value you set for itoa and atoi conversions
-	intmax_t		null;//null passed
+	char			k;
+	intmax_t		sf;
+	intmax_t		width;
+	intmax_t		len;
+	intmax_t		size;
+	intmax_t		plus;
+	intmax_t		minus;
+	intmax_t		p;
+	intmax_t		p_width;
+	intmax_t		hash;
+	intmax_t		neg;
+	intmax_t		base;
+	intmax_t		null;
 	intmax_t		z;
 }					t_plchdr;
 /*

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_u_itoa_bs.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/09 15:46:32 by evanheum          #+#    #+#             */
+/*   Updated: 2017/06/09 15:46:49 by evanheum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char	*ft_u_itoa_bs(uintmax_t value, int base)
+char			*ft_u_itoa_bs(uintmax_t value, int base)
 {
-	uintmax_t n;
-	int len;
-	char *str;
+	uintmax_t	n;
+	int			len;
+	char		*str;
 
 	len = ft_count_unint_len(value, base);
 	n = value;
