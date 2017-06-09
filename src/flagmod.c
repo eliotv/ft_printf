@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:15 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/06 13:08:25 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 11:25:12 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ void	hash_handler(char **format, t_plchdr *res)
 	if (((**format == 'o' || **format == 'O') && res->p == 1) ||
 	((**format == 'o' || **format == 'O') && res->hash == 1))
 	{
-		if (res->width == 0)
-			res->size++;
-		ft_putchar('0');
+		{
+			if (res->width == 0 && res->size != res->p_width)
+				res->size++;
+			ft_putchar('0');
+			(res->p_width > 1) ? res->p_width-- : 0;
+			(res->p_width == 1) ? res->size++ : 0;
+		}
 	}
 	if ((**format == 'x' && res->p == 1) || (**format == 'x' && res->hash == 1))
 	{

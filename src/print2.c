@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 20:13:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/08 18:41:02 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 11:35:59 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void	width_flg_2(char **format, t_plchdr *res, char *s, int n)
 		if (res->width-- >= res->p_width)
 			ft_putstr(&res->k);
 		res->k = res->k == '0' && res->p_width != 0 ? ' ' : res->k;
-	//	(res->null == 1 && res->p == 0 && **format == 'c') ?
-		//	res->width-- : 0;
 	}
 	if (DIG_MOD)
 		width_num(format, res, &s, n);
@@ -62,8 +60,10 @@ void	width_flg_2(char **format, t_plchdr *res, char *s, int n)
 		put_perc(format, s, res);
 	else if (res->p_width == -1 && *s == '0' && res->hash == 0 && res->sf == 0)
 		ft_putchar(' ');
-	else
+	else if (*s == 0)
 		write(1, s, n);
+	else
+		ft_putstr(s);
 }
 
 char	*width_num(char **format, t_plchdr *res, char **s, int n)
