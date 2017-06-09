@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/05 13:20:07 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/08 18:56:17 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ t_plchdr		*init_res(t_plchdr *res)
 	res->base = 0;
 	res->sf = 0;
 	res->null = 0;
+	res->z = 0;
 	return (res);
 }

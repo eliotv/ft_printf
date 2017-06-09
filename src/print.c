@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 18:27:13 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/08 16:02:40 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 10:41:35 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	print_edge(char **format, t_plchdr *res, char *s, int n)
 	if (*s == '0' && res->p == 1 && **format != 'o' && **format != 'O' &&
 		res->hash == 1)
 		NULL;
-	(DIG_MOD) ? edge_num_mod(res, &s, n) : 0;
+	(DIG_MOD) ? edge_num_mod(res, &s, &n) : 0;
 	space_flag(format, s, res);
 	((**format == 'u' || **format == 'U') && res->width > 1 &&
 		res->size < (intmax_t)ft_strlen(s)) ? res->size = ft_strlen(s) : 0;
@@ -95,19 +95,23 @@ void	print_edge(char **format, t_plchdr *res, char *s, int n)
 		write(1, s, n);
 }
 
-char	*edge_num_mod(t_plchdr *res, char **s, int n)
+char	*edge_num_mod(t_plchdr *res, char **s, int *n)
 {
-	(res->neg == -1) ? res->p_width-- : 0;
-	while (res->p_width > n)
+//	(res->neg == -1) ? res->p_width-- : 0;
+	while (res->p_width > *n)
 	{
 		if (**s == '-')
 		{
 			ft_putchar(**s);
 			(*s)++;
+			(*n)--;
+		//	ft_putchar('0');
+		}
+		else
+		{
+			res->p_width--;
 			ft_putchar('0');
 		}
-		res->p_width--;
-		ft_putchar('0');
 	}
 	return (*s);
 }

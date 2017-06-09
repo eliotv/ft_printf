@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/07 16:29:03 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 10:41:08 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct		s_plchdr
 	intmax_t neg;// negative numbers
 	intmax_t base;// value you set for itoa and atoi conversions
 	intmax_t null;//null passed
+	intmax_t z;
 }					t_plchdr;
 /*
 **   --------------------  build.c  --------------------
@@ -116,7 +117,7 @@ char				*perc_p_join(char *s, t_plchdr *res);
 void				neg_flg_width(char **format, t_plchdr *res, char *s, int n);
 void				pos_flg_width(char **format, t_plchdr *res, char *s, int n);
 void				print_edge(char **format, t_plchdr *res, char *s, int n);
-char				*edge_num_mod(t_plchdr *res, char **s, int n);
+char				*edge_num_mod(t_plchdr *res, char **s, int *n);
 void				edge_p_width(char **format, char *s, t_plchdr *res);
 /*
 **	--------------------	printf2.c	----------------
