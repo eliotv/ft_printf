@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/08 18:56:17 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:26:32 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_plchdr		*init_res(t_plchdr *res)
 {
-
 	if (res)
 		free(res);
 	res = NULL;

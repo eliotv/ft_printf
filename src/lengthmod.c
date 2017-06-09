@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:28 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/02 21:35:56 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:27:46 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	ll_mod(char **format, t_plchdr *res)
 		}
 	}
 }
+
 char	length_mod_ck(char **format, t_plchdr *res)
 {
-	if (!F_SPEC)
+	if (L_MOD)
 	{
 		h_mod(format, res);
 		ll_mod(format, res);
@@ -55,6 +56,8 @@ char	length_mod_ck(char **format, t_plchdr *res)
 			res->len = 6;
 			(*format)++;
 		}
+		else
+			(L_MOD) ? (*format)++ : 0;
 	}
 	return (**format);
 }

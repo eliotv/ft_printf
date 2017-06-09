@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/09 14:17:14 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:30:37 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 # define F_T (**format)
 # define L_S (F_T == 'c' || F_T == 's' || F_T == 'p' || F_T == '%')
 # define F_SPEC (F_T == 'C' || F_T == 'S' || DIG_MOD || L_S)
-
-
 
 # define L_MOD (F_T == 'h' || F_T == 'l' || F_T == 'z' || F_T == 'j')
 
@@ -63,9 +61,9 @@ t_plchdr			*init_res(t_plchdr *res);
 **   -------------------  ft_printf.c  -----------------
 */
 int					ft_printf(char const *format, ...);
-int				search_format(char **format, va_list ap);
-void			search_flg_mod(char **format, va_list ap, t_plchdr *res);
-void			print_format(char **format, t_plchdr *res);
+int					search_format(char **format, va_list ap);
+void				search_flg_mod(char **format, va_list ap, t_plchdr *res);
+void				print_format(char **format, t_plchdr *res);
 /*
 **   ------------------  conversion2.c  ----------------
 */

@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:18 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/08 19:31:16 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:29:11 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,14 @@ void			uint_hex_conv(char **format, t_plchdr *res, va_list ap, char c)
 	ft_strdel(&s);
 }
 
-void	pointer_adress(char **format, t_plchdr *res, va_list ap)
+void			pointer_adress(char **format, t_plchdr *res, va_list ap)
 {
-	char *s;
-	char *hex;
-	char *tmp;
+	char		*s;
+	char		*hex;
+	char		*tmp;
 
 	tmp = NULL;
 	hex = "0x";
-
 	if (res->p == 1 && res->p_width == 0)
 	{
 		ft_putstr(hex);

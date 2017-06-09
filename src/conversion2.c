@@ -6,15 +6,15 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:03 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/08 19:09:17 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:29:35 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void						char_conv(char **format, t_plchdr *res, va_list ap)
+void					char_conv(char **format, t_plchdr *res, va_list ap)
 {
-	char					c[2];
+	char				c[2];
 
 	if (**format == '%')
 	{
@@ -62,7 +62,7 @@ void					str_conv(char **format, t_plchdr *res, va_list ap)
 	(res->null == 1) ? free(s) : 0;
 }
 
-intmax_t			get_int(t_plchdr *res, va_list ap)
+intmax_t				get_int(t_plchdr *res, va_list ap)
 {
 	if (res->len == 1)
 		return ((char)va_arg(ap, int));
@@ -90,6 +90,7 @@ void					dec_conv(char **format, t_plchdr *res, va_list ap)
 	nbr = get_int(res, ap);
 	res->neg = (nbr < 0) ? -1 : 1;
 	s = ft_itoa(nbr);
+	(res->plus == 1 && res->neg == -1) ? res->plus = 0 : 0;
 	if (res->p_width > res->width &&
 		res->p_width > (intmax_t)(ft_strlen(s)))
 	{

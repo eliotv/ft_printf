@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 18:27:13 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/09 11:34:12 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 14:52:03 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	pos_flg_width(char **format, t_plchdr *res, char *s, int n)
 		NULL;
 	else
 		write(1, s, n);
-	}
+}
 
 void	print_edge(char **format, t_plchdr *res, char *s, int n)
 {

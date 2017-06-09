@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 20:13:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/09 13:52:23 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:28:07 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	width_flg(char **format, t_plchdr *res, char *s, int n)
 	if (n < res->p_width)
 	{
 		res->k = ' ';
-		(*s == '-') ? res->p_width++: 0;
+		(*s == '-') ? res->p_width++ : 0;
 		k = (res->p_width > (intmax_t)ft_strlen(s) && **format == 's') ?
 			ft_strlen(s) : res->p_width;
 		while (k < res->width--)
