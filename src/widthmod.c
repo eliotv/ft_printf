@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:35 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/07 16:39:36 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/08 15:30:41 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	put_width_spc(char **format, char *s, t_plchdr *res)
 		width_flg(format, res, s, n);
 	else
 		print_edge(format, res, s, n);
-
 }
 
 char	**get_width_len(char **format, t_plchdr *res)

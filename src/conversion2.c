@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:03 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/03 19:18:48 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/08 17:56:01 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,13 @@ void					dec_conv(char **format, t_plchdr *res, va_list ap)
 	nbr = get_int(res, ap);
 	res->neg = (nbr < 0) ? -1 : 1;
 	s = ft_itoa(nbr);
-	if (res->width == 0)
+	if (res->p_width > res->width &&
+		res->p_width > (intmax_t)(ft_strlen(s)))
+	{
+		res->size = res->p_width;
+		(*s == '-') ? res->size++ : 0;
+	}
+	else if (res->width == 0)
 		res->size += ft_strlen(s);
 	else if (res->width < (intmax_t)ft_strlen(s))
 		res->size = ft_strlen(s);

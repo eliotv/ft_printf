@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 20:13:23 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/07 16:49:43 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/08 18:09:02 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,11 @@ void	width_flg(char **format, t_plchdr *res, char *s, int n)
 	if (n < res->p_width)
 	{
 		res->k = ' ';
-		(*s == '-') ? res->p_width++ : 0;
+		(*s == '-') ? res->p_width++: 0;
 		k = (res->p_width > (intmax_t)ft_strlen(s) && **format == 's') ?
 			ft_strlen(s) : res->p_width;
 		while (k < res->width--)
 			ft_putstr(&res->k);
-		(**format == 'd') ? res->size-- : 0;
 	}
 	width_flg_2(format, res, s, n);
 }
@@ -69,8 +68,9 @@ void	width_flg_2(char **format, t_plchdr *res, char *s, int n)
 
 char	*width_num(char **format, t_plchdr *res, char **s, int n)
 {
-	((res->p_width > res->width) && (F_T != 'o' && F_T != 'O' && F_T != 'x' &&
-	F_T != 'X')) ? res->size += res->p_width - res->width : 0;
+	((res->p_width > res->width) && (F_T != 'd' && F_T != 'D' && F_T != 'o' &&
+		F_T != 'O' && F_T != 'x' && F_T != 'X' && F_T != 'u' && F_T != 'U' &&
+		F_T != 'i')) ? res->size += res->p_width - res->width : 0;
 	if (**s == '-')
 	{
 		ft_putchar(**s);

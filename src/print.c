@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 18:27:13 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/07 16:09:07 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/08 16:02:40 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ char	*edge_num_mod(t_plchdr *res, char **s, int n)
 		{
 			ft_putchar(**s);
 			(*s)++;
-			res->size++;
 			ft_putchar('0');
 		}
 		res->p_width--;
