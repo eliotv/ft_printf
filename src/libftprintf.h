@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:29 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/09 11:04:05 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/09 12:00:44 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,25 @@
 
 # define ALL_MOD (F_T == 'h' || F_T == 'l' || F_T == 'z' || F_T == 'j' || F_T == '-' || F_T == '0' || F_T == ' ' || F_T == '#' || F_T == '+' || F_T == '.' || F_T == '*' || (F_T >= '0' && F_T <= 9))
 
-#include "../libft/libft.h"
-#include <stdarg.h>
-#include <limits.h>
+# include "../libft/libft.h"
+# include <stdarg.h>
+# include <limits.h>
 typedef struct		s_plchdr
 {
-	char k;// storing ' ' or '0' for printing
-	intmax_t sf;//space flag
-	intmax_t width;//width mod
-	intmax_t len;//len mod
-	intmax_t size;//return size
-	intmax_t plus;// if '+' set value 1
-	intmax_t minus;// if '-' set value 1
-	intmax_t p;//percision on/off
-	intmax_t p_width;// width of percision
-	intmax_t hash;// if '#' set value 1
-	intmax_t neg;// negative numbers
-	intmax_t base;// value you set for itoa and atoi conversions
-	intmax_t null;//null passed
-	intmax_t z;
+	char			k;// storing ' ' or '0' for printing
+	intmax_t		sf;//space flag
+	intmax_t		width;//width mod
+	intmax_t		len;//len mod
+	intmax_t		size;//return size
+	intmax_t		plus;// if '+' set value 1
+	intmax_t		minus;// if '-' set value 1
+	intmax_t		p;//percision on/off
+	intmax_t		p_width;// width of percision
+	intmax_t		hash;// if '#' set value 1
+	intmax_t		neg;// negative numbers
+	intmax_t		base;// value you set for itoa and atoi conversions
+	intmax_t		null;//null passed
+	intmax_t		z;
 }					t_plchdr;
 /*
 **   --------------------  build.c  --------------------
@@ -56,7 +56,7 @@ t_plchdr			*init_res(t_plchdr *res);
 */
 int					ft_printf(char const *format, ...);
 int				search_format(char **format, va_list ap);
-void  			search_flg_mod(char **format, va_list ap, t_plchdr *res);
+void			search_flg_mod(char **format, va_list ap, t_plchdr *res);
 void			print_format(char **format, t_plchdr *res);
 /*
 **   ------------------  conversion2.c  ----------------
