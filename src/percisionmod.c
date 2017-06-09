@@ -6,7 +6,7 @@
 /*   By: evanheum <evanheum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 10:33:33 by evanheum          #+#    #+#             */
-/*   Updated: 2017/06/08 15:21:14 by evanheum         ###   ########.fr       */
+/*   Updated: 2017/06/08 18:19:39 by evanheum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		percision_mod(char **format, t_plchdr *res, char *s, int n)
 		if (res->hash == 0)
 			res->width--;
 	}
-	if (res->neg != -1)
+	if (res->neg != -1 && F_T != 'c' && F_T != 'C')
 		res->size = (res->p_width > res->width) ?
 			res->p_width : res->width;
 	(res->p_width > (intmax_t)ft_strlen(s) && **format == 's' &&
